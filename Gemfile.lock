@@ -259,7 +259,7 @@ DEPENDENCIES
   guard-rspec (~> 4.7.3)
   jbuilder (~> 2.7)
   listen (~> 3.2)
-  pg (~> 0.18)
+  pg (~> 0.21)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   rspec-rails (~> 3.7)
