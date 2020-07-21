@@ -1,3 +1,11 @@
 // Place all the styles related to the desktop controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+  background: rgb(240,242,231);
+  background: -moz-linear-gradient(220deg, rgba(240,242,231,1) 0%, rgba(72,129,149,1) 35%, rgba(24,45,88,1) 100%);
+  background: -webkit-linear-gradient(220deg, rgba(240,242,231,1) 0%, rgba(72,129,149,1) 35%, rgba(24,45,88,1) 100%);
+  background: linear-gradient(220deg, rgba(240,242,231,1) 0%, rgba(72,129,149,1) 35%, rgba(24,45,88,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f0f2e7",endColorstr="#182d58",GradientType=1);
+}
