@@ -9,3 +9,19 @@ body {
   background: linear-gradient(220deg, rgba(240,242,231,1) 0%, rgba(72,129,149,1) 35%, rgba(24,45,88,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f0f2e7",endColorstr="#182d58",GradientType=1);
 }
+
+.ui.inverted.menu.start-bar {
+  background-color: #111224;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 0;
+  div.header.item h3 {
+    a {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+}
+
+
