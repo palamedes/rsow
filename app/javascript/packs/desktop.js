@@ -7,6 +7,15 @@ $(document).on('ready turbolinks:load', function() {
 
   // Windows
   $('.ui.window').draggable({ handle: '.headbar' });
+  $('.ui.window').resizable(
+    {
+      animate: true,
+      containment: 'body',
+      helper: "window-resizer",
+      minHeight: 200,
+      minWidth: 300,
+    }
+  );
 
 
 });

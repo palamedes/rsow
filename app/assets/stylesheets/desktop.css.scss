@@ -24,10 +24,16 @@ body {
   }
 }
 
+.window-resizer { border: 2px dotted #00F; }
 .ui.window {
-  margin: 10px;
-  padding: 0;
+  margin: 0;
+  padding: 5px;
   .headbar {
 
+  }
+  .compact.segment {
+    border: 0;
+    margin: 0;
+    padding: 0;
   }
 }
