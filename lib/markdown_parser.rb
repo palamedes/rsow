@@ -2,7 +2,7 @@
 # and passes everything back as an object for rendering.
 module MarkdownParser
   class Parser
-    def parse file
+    def self.parse file
       # If there is no .md add it.
       file += ".md" unless file.include? '.md'
       # Pull our template or rescue and nil
@@ -34,8 +34,13 @@ module MarkdownParser
           if parsingVariables == true
             # Split our line into key : value
             parsedVariable = line.split ':', 2
+            # Define our key and convert it to a symbol
+            key = parsedVariable.first.strip.to_sym
+            # Cast as boolean if it's a boolean value
+            value = parsedVariable.last.strip
+            value = ActiveModel::Type::Boolean.new.cast(value) if value == 'true' || value == 'false'
             # Inject that into our pageVariables stripping white space
-            pageVariables[parsedVariable.first.strip] = parsedVariable.last.strip
+            pageVariables[key] = value
             # else we are parsing the rest of the page
           else
             # Do nothing with it.. at this point it must be content
