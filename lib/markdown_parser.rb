@@ -3,6 +3,8 @@
 module MarkdownParser
   class Parser
     def parse file
+      # If there is no .md add it.
+      file += ".md" unless file.include? '.md'
       # Pull our template or rescue and nil
       template = File.read Rails.root.join("app/views/documents/", file) rescue nil
       # if we have our template... get to it!
