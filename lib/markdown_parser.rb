@@ -3,9 +3,9 @@
 module MarkdownParser
   class Parser
     def parse file
-
-      template = File.read file rescue nil
-
+      # Pull our template or rescue and nil
+      template = File.read Rails.root.join("app/views/documents/", file) rescue nil
+      # if we have our template... get to it!
       unless template.nil?
         # markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
         # some Vars for the content
