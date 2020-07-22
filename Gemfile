@@ -29,7 +29,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # markdown reader
-gem 'redcarpet', '~> 3.5'
+#gem 'redcarpet', '~> 3.5'
+gem 'kramdown', '~> 2.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
