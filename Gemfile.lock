@@ -169,6 +169,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redcarpet (3.5.0)
     regexp_parser (1.7.1)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -262,6 +263,7 @@ DEPENDENCIES
   pg (~> 0.21)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
+  redcarpet (~> 3.5)
   rspec-rails (~> 3.7)
   sass-rails (>= 6)
   selenium-webdriver
