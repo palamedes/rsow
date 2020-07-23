@@ -17,6 +17,7 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
+  margin-top: 0;
   border-radius: 0;
   div.header.item h3 {
     a {
@@ -30,11 +31,9 @@ body {
 div.desktop {
   width: 100vw;
   height: 94vh;
-  display: flex;
 }
 
-.ui.window {
-  height: 100%;
+div.ui.window {
   margin: 0;
   padding: 5px;
   border: 0;
