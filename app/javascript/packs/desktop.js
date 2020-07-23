@@ -4,8 +4,6 @@ $(document).on('ready turbolinks:load', function() {
   // Turn on all dropdowns.
   $('.ui.dropdown').dropdown();
 
-//  $('div.ui.window').height($('body').height());
-
   var resizableWindowArguments = {
     containment: '.desktop',
     minHeight: 200,
