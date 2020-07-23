@@ -100,3 +100,12 @@ div.ui.window {
     max-width: 300px;
   }
 }
+
+/* This is one of the few places I allow !important */
+.hidden {
+  display: none !important;
+}
+
+hr {
+  overflow: hidden;
+}
