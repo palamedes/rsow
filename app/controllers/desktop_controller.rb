@@ -11,7 +11,8 @@ class DesktopController < ApplicationController
     document = MarkdownParser::Parser.parse "page/#{params[:page]}"
     redirect_to "/" if document[:vars][:published] == false
 
-    @html = document[:html].html_safe
+    @windowTitle = document[:vars][:title].html_safe
+    @windowContent = document[:html].html_safe
   end
 
 end
