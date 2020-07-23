@@ -28,12 +28,22 @@ body {
 .ui.window {
   margin: 0;
   padding: 5px;
-  .headbar {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
 
-  }
   .compact.segment {
     border: 0;
     margin: 0;
     padding: 0;
+
+    .bottom.segment {
+      overflow: auto;
+    }
   }
+}
+
+.ui.basic.buttons.borderless {
+  border: 0;
+  border-radius: 0;
 }
