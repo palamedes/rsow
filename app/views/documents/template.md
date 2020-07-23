@@ -3,6 +3,7 @@ published: false
 sitemap: true
 title:
 excerpt:
+date: 
 layout: post
 tags:
 categories:
@@ -15,33 +16,27 @@ allow_comments: true
 duration:
 costs: 
 updates: 
-tile_position: default
-tile_size: 1x1
-tile_main_top:
-tile_image_offset:
-tile_color:
-tile_class:
+slug: template
 ---
 
 published: true|false
  ^ Is this file published and should it show up at all
+ 
+sitemap: true|false
+ ^ Should this file be included in the site map?
 
-type: post|page
- ^ Legacy from WP.  Is this a blog post, or a static page (irony!).
-   Posts show up in lists and pay attention to dates, Pages do not.
-   There are other types including "special" which is treated as a page but doesn't show up in menus. ( /tags/ for example)
-   Coming soon are gallery and store front types too.. stay tuned.
-   LEGACY NO LONGER USED... Documents directory structure now defines this
 
 title: {title string, try to keep it under 100 characters }
  ^ This is the title link that shows up at the top of the page, and in lists
 
 excerpt: {blurb string, try to keep it under 500 characters }
- ^ A short expert from the content (or not) that shows up under the title in the lists.
- NOTE: It's VITAL you put something here.  Otherwise Jekyll will now just inject something and if that something isn't text, it breaks the world.  So put something.
+ ^ A short expert from the content (or not) that shows up under the title in the lists and in meta data.  Important.
+
+date: {Date of initial publish}
+ ^ This is the order things will be sorted in for blog posts.  Not required for static pages.
 
 layout: post|page|none|{etc...}
- ^ Which layout does this content use for display?
+ ^ Which layout/background/window style etc.. does this content use for display?  
 
 tags: A,B,C {or..}
  - A
@@ -59,9 +54,6 @@ gallery:
  - /images/.....jpg
  - /images/.....jpg
  ^ an array of all the images in the gallery
-
-ribbon:
- ^ On the front page, what corner banner should we use? {may change}
 
 document_class:
  ^ any class you want to go to the page/post as it's displayed, goes here
@@ -81,35 +73,57 @@ costs:
 updates:
  ^ Array of the dates the file was updated ( will be converted to a date in the template )
 
+slug: {unique name}
+ ^ Typically the file name, this is the name that will be assigned to the document for desktop tracking purposes
 
-* Note: All TILE keys are no longer used but are from an older "pintrest" style of rendering 
 
- tile_position: default|topright|topleft
-  ^ The idea behind this is we either do nothing and let it cascade to where ever it needs to {default} or 
-  we then try to place it top right, or top left
-  
- tile_size:
+
+
+
+
+LEGACY NO LONGER USED:
+
+type: post|page
+ ^ Legacy from WP.  Is this a blog post, or a static page (irony!).
+   Posts show up in lists and pay attention to dates, Pages do not.
+   There are other types including "special" which is treated as a page but doesn't show up in menus. ( /tags/ for example)
+   Coming soon are gallery and store front types too.. stay tuned.
+   LEGACY NO LONGER USED... Documents directory structure now defines this
+
+ribbon:
+ ^ On the front page, what corner banner should we use? {may change}
+
+
+tile_position: default|topright|topleft
+ ^ The idea behind this is we either do nothing and let it cascade to where ever it needs to {default} or we then try to place it top right, or top left
+
+tile_size:
   ^ {width}x{height} of the tile on the listing pages.  Default is always 1x1 unless its the very first post in the list
     then its 2x2.  The system supports tiles up to 10 columns wide and as tall as you want to make them, but your canvas
     determines the ultimate width.  You obviously can't put a 10 width tile in a 4 column canvas! (it will crop it to 4)
- 
- tile_main_top:
+
+tile_main_top:
   ^ height in pixels or percent the main to start.  Default is 50%, but if you have a really short image then that looks odd and you can 
   adjust it here.  Using percent means the site scales better.
-  
- tile_image_offset: 50% 0
+
+tile_image_offset: 50% 0
   ^ default is "50% 0" or "center top" however if you want to change that you can do it here.  Right number is top, to move it up
   you need to apply a negative number.
-  
- tile_color:
+
+tile_color:
   ^ Hex value of the color of the tile, or it will randomly pick one form the css list of like 20 or so.
- 
- tile_class:
+
+tile_class:
   ^ any class you want to add to the block that shows up on the index pages, goes here
+
+
+
+
+
 
  ----------
  
- his is a demo of all styled elements in Jekyll Now. 
+ This is a demo of all styled elements in the site as of now. 
  
  [View the markdown used to create this post](https://raw.githubusercontent.com/barryclark/www.jekyllnow.com/gh-pages/_posts/2014-6-19-Markdown-Style-Guide.md).
  
