@@ -11,14 +11,13 @@ allow_comments: false
 slug: about
 ---
 
-![Email Address](/images/2008/06/email.gif){: .right}
+![Email Address](/images/2008/06/email.gif){: .float .right .padded .bottom}
 
+[![Jason Ellis](/images/photos/me/jason-ellis-square.png){: .padded .right}](/images/photos/me/jason-ellis-square.png "Jason Ellis"){: .float .left}
 
-[![Jason Ellis](/images/photos/me/jason-ellis-square.png){: .scaled .left}](/images/photos/me/jason-ellis-square.png "Jason Ellis"){: .fancybox .left}
-
-<audio controls class='pull-right'>
+<!-- audio controls class='float right'>
   <source src="/images/1972/about.ogg" type="audio/ogg" />
-</audio>
+</audio -->
 
 RandomStringOfWords.com or RSoW.com is my very own virtual oubliette that has been actively serving content since February 2000.
 
@@ -32,7 +31,7 @@ Palamedes is the name I program under and is a name used throughout history.  Pa
 
 Tescht Vihravendrel Ambjuri'Belshiva is a fantasy character name that I have used for years and years in every game imaginable. From Warhammer and D&amp;D to Everquest and World of Warcraft.  It sometimes gets reduced to just Vihravendrel or even shorter to just Vihra or Vihr.
 
-[![Toiletduck](/images/2009/07/toiletduck-200x200.jpg){: .scaled .left}](/images/2009/07/toiletduck-200x200.jpg "Toiletduck"){: .fancybox .left}
+[![Toiletduck](/images/2009/07/toiletduck-200x200.jpg){: .scaled .padded .right}](/images/2009/07/toiletduck-200x200.jpg "Toiletduck"){: .float .left}
 
 ## Toiletduck
 
@@ -42,7 +41,7 @@ When playing first person shooters or arcade style games, I generally play under
 
 All three names I have come to identify with, and were you to call out using one of them, I would answer -- all three names are me, and yet none of them are...
 
-[![I'm the one on the right](/images/cruise/Cruise%20089.jpg){: .scaled .right}](/images/cruise/Cruise%20089.jpg "I'm the one on the right."){: .fancybox .right}
+[![I'm the one on the right](/images/cruise/Cruise%20089.jpg){: .scaled .padded .left}](/images/cruise/Cruise%20089.jpg "I'm the one on the right."){: .lightbox .float .right}
 
 
 ## Jason Ellis - <small>[Resume](/jason-ellis-resume/)</small>
@@ -93,7 +92,7 @@ After I got out of the military I started my own business on the world wide web.
 
 After 2 years of development I ended up selling Palavista to a company in New York (ChangeMusic inc.) for $330k. And proceeded to retire for a couple years. It's a shame, they did nothing with it.  But then that's because about 2 weeks after I sold it, napster came out and it was all over for them.. I got out just in time..
 
-[![Jason Ellis Uniform](/images/photos/me/me-in-uniform2.jpg){: .scaled .medium .left}](/images/photos/me/me-in-uniform2.jpg "Jason Ellis Uniform"){: .fancybox .left}
+[![Jason Ellis Uniform](/images/photos/me/me-in-uniform2.jpg){: .scaled .medium .padded .right}](/images/photos/me/me-in-uniform2.jpg "Jason Ellis Uniform"){: .lightbox .float .left}
 
 ## Law Enforcement
 
