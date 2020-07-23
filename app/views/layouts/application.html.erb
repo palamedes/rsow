@@ -5,6 +5,45 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%#
+    <meta name="description" content="{% if page.type == 'post' %}{{ page.title }} :: {{ page.excerpt }}{% else %}{{ site.description }}{% endif %}" />
+    <meta name="author" content="Jason Ellis" />
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="en" />
+    <meta http-equiv="Cache-control" content="public">
+    <meta charset="utf-8" />
+
+    <meta name="MS.LOCALE" content="EN-US" />
+    <meta name="ROBOTS" content="index,follow" />
+    <meta name="URL" content="{{ site.url }}" />
+    {%comment%}<meta name="fb:admin" content="710704899" />{%endcomment%}
+    <meta name="fb:app_id" content="1184833678352308" />
+
+    <meta itemprop="name" content="Jason Ellis | {% if page.type == 'post' %}{{ page.title }}{% else %}{{ site.description }}{% if page.title %}| {{ page.title }}{% endif %}{% endif %}">
+    <meta itemprop="description" content="{% if page.type == 'post' %}{{ page.title }} :: {{ page.excerpt }}{% else %}{{ site.description }}{% endif %}">
+    <meta itemprop="image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% endif %}">
+
+    <meta property="og:url"    content="{{ site.url }}" />
+    <meta property="og:type"   content="article" />
+    <meta property="og:title"  content="Jason Ellis | {% if page.type == 'post' %}{{ page.title }}{% else %}{{ site.description }}{% endif %}" />
+    <meta property="og:description"  content="{% if page.type == 'post' %}{{ page.excerpt }}{% else %}{{ site.description }}{% endif %}" />
+    <meta property="og:image"  content="{% if page.image %}{{ site.url }}{{ page.image }}{% endif %}" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jason Ellis | {% if page.type == 'post' %}{{ page.title }}{% else %}{{ site.description }}{% if page.title %}| {{ page.title }}{% endif %}{% endif %}">
+    <meta name="twitter:description" content="{% if page.type == 'post' %}{{ page.title }} :: {{ page.excerpt }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% endif %}">
+
+    <meta name="google-site-verification" content="wHMVNxhYpUZWA4VUYdvlrg6ib6CnrzZDdnMocpelhm0" />
+
+    <meta name="revisit-after" content="10 days" />
+    <meta name="geo.region" content="US-GA" />
+    <meta name="geo.placename" content="Blairsville" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
