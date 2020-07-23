@@ -11,7 +11,7 @@ allow_comments: false
 slug: about
 ---
 
-![Email Address](/images/2008/06/email.gif){: .float .right .padded .bottom}
+![Email Address](/images/1972/email.gif){: .float .right .padded .bottom}
 
 [![Jason Ellis](/images/photos/me/jason-ellis-square.png){: .padded .right}](/images/photos/me/jason-ellis-square.png "Jason Ellis"){: .float .left}
 
@@ -31,7 +31,7 @@ Palamedes is the name I program under and is a name used throughout history.  Pa
 
 Tescht Vihravendrel Ambjuri'Belshiva is a fantasy character name that I have used for years and years in every game imaginable. From Warhammer and D&amp;D to Everquest and World of Warcraft.  It sometimes gets reduced to just Vihravendrel or even shorter to just Vihra or Vihr.
 
-[![Toiletduck](/images/2009/07/toiletduck-200x200.jpg){: .scaled .padded .right}](/images/2009/07/toiletduck-200x200.jpg "Toiletduck"){: .float .left}
+[![Toiletduck](/images/1972/toiletduck-200x200.jpg){: .scaled .padded .right}](/images/1972/toiletduck-200x200.jpg "Toiletduck"){: .float .left}
 
 ## Toiletduck
 
@@ -41,7 +41,7 @@ When playing first person shooters or arcade style games, I generally play under
 
 All three names I have come to identify with, and were you to call out using one of them, I would answer -- all three names are me, and yet none of them are...
 
-[![I'm the one on the right](/images/cruise/Cruise%20089.jpg){: .scaled .padded .left}](/images/cruise/Cruise%20089.jpg "I'm the one on the right."){: .lightbox .float .right}
+[![I'm the one on the right](/images/photos/me/me_bird.jpg){: .scaled .padded .left}](/images/photos/me/me_bird.jpg "I'm the one on the right."){: .lightbox .float .right}
 
 
 ## Jason Ellis - <small>[Resume](/jason-ellis-resume/)</small>

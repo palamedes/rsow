@@ -31,11 +31,12 @@ body {
 div.desktop {
   width: 100vw;
   height: 94vh;
+  padding: 5px;
 }
 
 div.ui.window {
   margin: 0;
-  padding: 5px;
+  padding: 0;
   border: 0;
   box-shadow: none;
   background: transparent;
@@ -49,6 +50,10 @@ div.ui.window {
     .bottom.segment {
       overflow: auto;
     }
+  }
+  .ui-resizable-se {
+    right: -3px;
+    bottom: 7px;
   }
 }
 

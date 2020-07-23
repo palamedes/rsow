@@ -4,7 +4,7 @@ $(document).on('ready turbolinks:load', function() {
   // Turn on all dropdowns.
   $('.ui.dropdown').dropdown();
 
-  $('div.ui.window').height($('body').height());
+//  $('div.ui.window').height($('body').height());
 
   var resizableWindowArguments = {
     containment: '.desktop',
@@ -18,8 +18,6 @@ $(document).on('ready turbolinks:load', function() {
       adjustInternalWindowHeight($(ui.element[0]), ui.size.height);
     }
   }
-
-
   // Windows
   $('div.ui.window').draggable({
     handle: '.headbar',
@@ -30,10 +28,11 @@ $(document).on('ready turbolinks:load', function() {
   // After resizing window, resize the contents a tad.
   var adjustInternalWindowHeight = function($dis, height) {
     var newHeight = height - 11;
-    $dis.children('div.ui.compact.segment').height(newHeight);
+    $dis.find('div.ui.compact.segment').height(newHeight);
     var menuHeight = $dis.find('div.ui.top.attached.menu').first().outerHeight();
     $dis.find('div.ui.bottom.attached.segment').height(newHeight - menuHeight - 36);
   }
+
   // Set WindowSize
   var setWindowSize = function($window, height, width) {
     $window.height(height);
@@ -41,15 +40,15 @@ $(document).on('ready turbolinks:load', function() {
     adjustInternalWindowHeight($window, height);
   }
 
+  // RESTORE BUTTON at top right of window
   $('button.restore.window').click(function() {
     restoreWindow($(this).parents('div.ui.window'));
   });
 
+  // Here is how we restore a window
   var restoreWindow = function($window) {
     setWindowSize($window, 500,800);
-//    $('div.ui.window').resizable(resizableWindowArguments)
+    $('div.ui.window').resizable(resizableWindowArguments)
   }
 
-
-  
 });
