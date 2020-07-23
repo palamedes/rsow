@@ -1,14 +1,14 @@
 ---
-published: false
+published: true
 title: About Me
 excerpt: I am a calm, considerate problem solver. I am a self taught software engineer and have worked with computers all my life. I am familiar with and have used most major operating systems and have an almost intuitive understanding of all major software packages, as well as having professional experience with most of them.
 layout: page
 tags:
 categories:
 image:
-ribbon:
 private: true
 allow_comments: false
+slug: about
 ---
 
 ![Email Address](/images/2008/06/email.gif){: .right}
@@ -24,7 +24,7 @@ RandomStringOfWords.com or RSoW.com is my very own virtual oubliette that has be
 
 I answer to many names;
 
-## Palamedes - <small>[Historical Reference](/palamedes-historical-reference/ "Palamedes Historical Reference")</small>
+## Palamedes - <small>[Historical Reference](/palamedes/ "Palamedes Historical Reference")</small>
 
 Palamedes is the name I program under and is a name used throughout history.  Palamedes originally was a member of the Greek expedition against Troy and made an enemy of Odysseus by exposing him when he pretended to be mad in order to avoid going to war.  In revenge, Odysseus made it look as if Palamedes had been betraying the Greeks to the Trojans in return for gold and caused Palamedes to be put to death.  The inventor of dice as well as several of the letters in our alphabet, all sources depicted Palamedes as clever... right up until the end I guess.
 
