@@ -9,7 +9,8 @@ private: false
 slug: palamedes
 ---
 
-<a href="/images/2006/12/Villa_Carlotta_Palamedes_1_l.jpg" class='fancybox pull-right' title="Villa Carlotta Palamedes"><img title="Villa Carlotta Palamedes" src="/images/2006/12/Villa_Carlotta_Palamedes_1_l-225x300.jpg" alt="Villa Carlotta Palamedes" width="225" height="300" /><br /><span>Villa Carlotta Palamedes</span></a>
+
+[![Villa Carlotta Palamedes](/images/1972/palamedes.jpg){: .scaled .medium .padded .left}](/images/1972/palamedes.jpg "Villa Carlotta Palamedes"){: .lightbox .float .right}
 
 *__In short:__* Palamedes, son of Nauplius, is the inventor of the dice and of several letters of the alphabet. Palamedes outwitted Odysseus, making him join the expedition against Troy. For that reason Odysseus was hostile to Palamedes; and during the war Odysseus, having taken a Trojan prisoner, compelled him to write a letter of treasonable purport ostensibly sent by Priam to Palamedes; and having buried gold in the quarters of Palamedes, dropped the letter in the camp. Agamemnon read the letter, found the gold, and delivered up Palamedes to the allies to be stoned as a traitor.
 
