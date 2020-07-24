@@ -9,13 +9,13 @@ image: /images/cruise/Cruise%20089.jpg
 ribbon:
 private: false
 allow_comments: false
+slug: resume
 ---
 
-[![Jason Ellis](/images/photos/me/jason-ellis-square.png){: .scaled .right}](/images/photos/me/jason-ellis-square.png "Jason Ellis"){: .fancybox .right}
+[![Jason Ellis](/images/photos/me/jason-ellis-square.png){: .scaled .padded .left}](/images/photos/me/jason-ellis-square.png "Jason Ellis"){: .float .right}
 
-[![Github](/images/github.png)](https://github.com/palamedes){: .right .noborder}
-[![Linkedin](/images/linkedin.png)](http://www.linkedin.com/in/jasonellis){: .right .noborder}
-
+[![Github](/images/github.png)](https://github.com/palamedes){: .float .right}
+[![Linkedin](/images/linkedin.png)](http://www.linkedin.com/in/jasonellis){: .float .right}
 
 ### Jason Ellis
 
