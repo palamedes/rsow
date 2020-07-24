@@ -11,17 +11,21 @@ $(document).on('ready turbolinks:load', function() {
     minWidth: 400,
     handles: 'se',
     resize: function(resize, ui) {
-      adjustInternalWindowHeight($(ui.element[0]), ui.size.height);
+      adjustInternalWindowHeight($(this), ui.size.height);
     },
     stop: function(resize, ui) {
-      adjustInternalWindowHeight($(ui.element[0]), ui.size.height);
+      adjustInternalWindowHeight($(this), ui.size.height);
+      setWindowLocationData($(this));
     }
   }
 
   // Set Defaults for a draggable window
   var draggableWindowArguments = {
     handle: '.headbar',
-    containment: '.desktop'
+    containment: '.desktop',
+    stop: function(drag, ui) {
+      setWindowLocationData($(this));
+    }
   }
 
   // Make Windows Draggable and Resizable
@@ -34,7 +38,7 @@ $(document).on('ready turbolinks:load', function() {
     $('div.desktop').height(availableDesktopHeight);
   }
 
-  // After resizing window, resize the contents a tad.
+  // After resizing window, resize the contents a tad because this can't be done with CSS
   var adjustInternalWindowHeight = function($dis, height) {
     var newHeight = height - 11;
     $dis.find('div.ui.compact.segment').height(newHeight);
@@ -57,23 +61,37 @@ $(document).on('ready turbolinks:load', function() {
 
   // Here is how we restore a window
   var restoreWindow = function($window) {
-
-    // @TODO check to see if we have a stored location and size of window, if we do.. use that.
-
-    setWindowSize($window, 500,800);
+    var windowLocation = getWindowLocationData($window);
+    setWindowPosition($window, windowLocation['top'], windowLocation['left']);
+    setWindowSize($window, windowLocation['height'], windowLocation['width']);
     $('div.ui.window').resizable(resizableWindowArguments)
   }
 
   // Here is how we maximize a window
   var maximizeWindow = function($window) {
-
-    // @TODO Store the windows current location and size so that on restore we can use it
-
     setWindowPosition($window, 0, 0);
     var desktopHeight = $('div.desktop').height();
     var desktopWidth = $('div.desktop').width();
     setWindowSize($window, desktopHeight, desktopWidth);
   }
+
+  // Store the window location data in the data of the window object for use later
+  var setWindowLocationData = function($window) {
+    $window.data('top', $window.position()['top']);
+    $window.data('left', $window.position()['left']);
+    $window.data('width', $window.width());
+    $window.data('height', $window.height());
+  }
+  // Get the window location and return it
+  var getWindowLocationData = function($window) {
+    return {
+      'top': $window.data('top') || 0,
+      'left' : $window.data('left') || 0,
+      'width' : $window.data('width') || 800,
+      'height' : $window.data('height') || 500
+    }
+  }
+
 
   // @TODO json call to get a new window of content
 
@@ -95,7 +113,9 @@ $(document).on('ready turbolinks:load', function() {
 
   // @TODO Be able to set minimum window width/height dynamically in the .md
   
-  
+  // @TODO if the window changes size, update the desktop size and redraw state of all windows so they fit accordingly.
+
+  // @TODO handle small views so we are no longer a window system if we get too small (mobile etc..)
   
   /* Stuff to run once we are ready to */
   
@@ -118,6 +138,7 @@ $(document).on('ready turbolinks:load', function() {
   // RESTORE BUTTON at top right of window
   $('button.maximize.window').click(function() {
     var $window = $(this).parents('div.ui.window');
+    setWindowLocationData($window);
     maximizeWindow($window);
     $(this).siblings('.restore').removeClass('hidden');
     $(this).addClass('hidden');
