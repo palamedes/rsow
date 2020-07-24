@@ -44,7 +44,7 @@ All three names I have come to identify with, and were you to call out using one
 [![I'm the one on the right](/images/photos/me/me_bird.jpg){: .scaled .padded .left}](/images/photos/me/me_bird.jpg "I'm the one on the right."){: .lightbox .float .right}
 
 
-## Jason Ellis - <small>[Resume](/jason-ellis-resume/)</small>
+## Jason Ellis - <small>[Resume](/resume/)</small>
 
 My real name is Jason Ellis. I'm 40+ year old software engineer and small business owner.  (41 at time of writing, I say 40 plus because who knows how long it will be before I update this..)
 
