@@ -116,14 +116,32 @@ $(document).on('ready turbolinks:load', function() {
   // @TODO if the window changes size, update the desktop size and redraw state of all windows so they fit accordingly.
 
   // @TODO handle small views so we are no longer a window system if we get too small (mobile etc..)
-  
+
+
+  // Quick hacked to gether date time function for bottom right of start bar.
+  var updateDateTime = function() {
+    var dT = new Date();
+    $dateTime = $('div.start-bar time');
+    var h = dT.getHours();
+    var ap = h > 12 ? 'PM' : 'AM';
+    h = h > 12 ? h-12 : h;
+    var m = dT.getMinutes();
+    m = m < 9 ? '0'+m : m;
+    var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var day = dT.getDate();
+    var year = dT.getFullYear();
+    $dateTime.html(h+':'+m+' '+ap+"<br/>"+month[dT.getMonth()]+' '+day+', '+year);
+    setTimeout(updateDateTime, 60000);
+  }
+
   /* Stuff to run once we are ready to */
   
   // Figure out how big our desktop actually is.. it's not the css size.
   adjustDesktop();
   // Really maximize any maximized windows
   maximizeWindow($('div.window.maximized'));
-
+  // Start the clock
+  updateDateTime();
 
   /* Clickable Events */
 
