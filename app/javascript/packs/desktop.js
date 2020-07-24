@@ -57,18 +57,46 @@ $(document).on('ready turbolinks:load', function() {
 
   // Here is how we restore a window
   var restoreWindow = function($window) {
+
+    // @TODO check to see if we have a stored location and size of window, if we do.. use that.
+
     setWindowSize($window, 500,800);
     $('div.ui.window').resizable(resizableWindowArguments)
   }
 
   // Here is how we maximize a window
   var maximizeWindow = function($window) {
+
+    // @TODO Store the windows current location and size so that on restore we can use it
+
     setWindowPosition($window, 0, 0);
     var desktopHeight = $('div.desktop').height();
     var desktopWidth = $('div.desktop').width();
     setWindowSize($window, desktopHeight, desktopWidth);
   }
 
+  // @TODO json call to get a new window of content
+
+  // @TODO start bar buttons should TRY to pull via JSON
+
+  // @TODO X window button should close the window, and if we are at that location then we should default back
+  // to desktop cleanly without other windows closing.
+
+  // @TODO Minimize window should effectively close the window or "minimize" it, but leave an item in the
+  // start bar letting people know that that window had been opened.  If it's an already existing static button
+  // like the about page, then it should just highlight that button as if it were still open.
+
+  // @TODO Slug of open window should find the associated button in the start bar and highlight it.
+  // @TODO If there is no existing button that corresponds to the opened window, add one and that's now your
+  // new app icon for that instance of that window.
+
+  // @TODO Question mark top right should give you some information about the window you have opened.. that means
+  // each window could have different or similar information based on what the information is.  Or defined by MD?
+
+  // @TODO Be able to set minimum window width/height dynamically in the .md
+  
+  
+  
   /* Stuff to run once we are ready to */
   
   // Figure out how big our desktop actually is.. it's not the css size.
