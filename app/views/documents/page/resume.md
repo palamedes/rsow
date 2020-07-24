@@ -5,11 +5,12 @@ excerpt: I am a calm, considerate problem solver. I am a self taught software en
 layout: page
 tags:
 categories:
-image: /images/cruise/Cruise%20089.jpg
+image: /images/photos/me/jason-ellis-square.png
 ribbon:
 private: false
 allow_comments: false
 slug: resume
+updates: 07/24/2020
 ---
 
 [![Jason Ellis](/images/photos/me/jason-ellis-square.png){: .scaled .padded .left}](/images/photos/me/jason-ellis-square.png "Jason Ellis"){: .float .right}
@@ -19,7 +20,7 @@ slug: resume
 
 ### Jason Ellis
 
-![Email Address](/images/2008/06/email.gif){: .right}
+![Email Address](/images/1972/email.gif){: .right}
 
 ### Professional Experience
 
