@@ -8,16 +8,24 @@ class DesktopController < ApplicationController
   # [GET] /:page[.json]
   # @TODO This will need to either work as a full page load, or a json pull of just the document
   def page
+    # Okay attempt to parse the page md file based on the params
     document = MarkdownParser::Parser.parse "page/#{params[:page]}"
-
-    if document[:vars][:published] == false
+    # If it's a document then cool, if not route back to /
+    if document.nil? || document[:published] == false
       redirect_to "/"
     else
-      @windowSlug = document[:vars][:slug].html_safe rescue nil
-      @windowTitle = document[:vars][:title].html_safe
-      @windowContent = document[:html].html_safe
+      respond_to do |format|
+        format.json { render json: {} }
+        format.html {
+          @document = document
+        }
+      end
     end
+  end
 
+  # [GET] /blog/:post[.json]
+  # @TODO this will need to also work using a .json request
+  def post
   end
 
 end
