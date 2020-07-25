@@ -76,7 +76,7 @@ $(document).on('ready turbolinks:load', function() {
     setWindowSize($window, desktopHeight, desktopWidth);
     // Push State and look for magic work "blog-" to make sure it gets slashed
     var loc = $window.attr('id').replace('blog-', 'blog/');
-    history.pushState({}, $window.find('a.header.item').html().trim(), "/"+loc)
+    history.pushState({}, $window.find('.active.header.item').html().trim(), "/"+loc)
   }
 
   // Store the window location data in the data of the window object for use later
