@@ -1,0 +1,21 @@
+
+
+<div class="ui window segment maximized" id="<%= @windowSlug %>">
+  <div class="ui compact segment">
+    <div class="ui tiny top attached menu headbar">
+      <a class="active header item">
+        <%= @windowTitle %>
+      </a>
+      <div class="right menu">
+        <div class="ui small basic borderless icon buttons">
+          <button class="ui button"><i class="question icon"></i></button>
+          <button class="ui button close window"><i class="window close outline icon"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="ui bottom attached segment">
+      <%= @windowContent %>
+    </div>
+  </div>
+</div>
+
