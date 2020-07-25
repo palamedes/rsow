@@ -64,7 +64,8 @@ $(document).on('ready turbolinks:load', function() {
     var windowLocation = getWindowLocationData($window);
     setWindowPosition($window, windowLocation['top'], windowLocation['left']);
     setWindowSize($window, windowLocation['height'], windowLocation['width']);
-    $('div.ui.window').resizable(resizableWindowArguments)
+    // Pop State
+    history.pushState({}, "", "/");
   }
 
   // Here is how we maximize a window
@@ -73,6 +74,8 @@ $(document).on('ready turbolinks:load', function() {
     var desktopHeight = $('div.desktop').height();
     var desktopWidth = $('div.desktop').width();
     setWindowSize($window, desktopHeight, desktopWidth);
+    // Push State
+    history.pushState({}, $window.find('a.header.item').html().trim(), "/"+$window.attr('id'))
   }
 
   // Store the window location data in the data of the window object for use later
@@ -92,6 +95,16 @@ $(document).on('ready turbolinks:load', function() {
     }
   }
 
+  // Iterate through each window open.. Find the start bar link for it and make sure that is set to active.
+  var updateStartbarLinks = function() {
+    $('div.window').each(function() {
+      var id = $(this).attr('id');
+      $('div.start-bar a.item[data-slug='+id+']').addClass('active');
+    });
+
+    // @TODO if we dont have one, then we need to create an entry for it..
+  }
+
 
   // @TODO json call to get a new window of content
 
@@ -104,7 +117,6 @@ $(document).on('ready turbolinks:load', function() {
   // start bar letting people know that that window had been opened.  If it's an already existing static button
   // like the about page, then it should just highlight that button as if it were still open.
 
-  // @TODO Slug of open window should find the associated button in the start bar and highlight it.
   // @TODO If there is no existing button that corresponds to the opened window, add one and that's now your
   // new app icon for that instance of that window.
 
@@ -116,6 +128,8 @@ $(document).on('ready turbolinks:load', function() {
   // @TODO if the window changes size, update the desktop size and redraw state of all windows so they fit accordingly.
 
   // @TODO handle small views so we are no longer a window system if we get too small (mobile etc..)
+
+  // @TODO Save UI state in cookies so you can come back to it later on a fresh page load.
 
 
   // Quick hacked to gether date time function for bottom right of start bar.
@@ -142,6 +156,8 @@ $(document).on('ready turbolinks:load', function() {
   maximizeWindow($('div.window.maximized'));
   // Start the clock
   updateDateTime();
+  // Set those start bar links as active or create the entry if there isn't one.
+  updateStartbarLinks();
 
   /* Clickable Events */
 
