@@ -105,6 +105,7 @@ $(document).on('ready turbolinks:load', function() {
     // @TODO if we dont have one, then we need to create an entry for it..
   }
 
+  // @TODO if someone clicks BACK after restoring a window it should go back to previous state of window?
 
   // @TODO json call to get a new window of content
 
