@@ -26,6 +26,19 @@ class DesktopController < ApplicationController
   # [GET] /blog/:post[.json]
   # @TODO this will need to also work using a .json request
   def post
+    # Okay attempt to parse the page md file based on the params
+    document = MarkdownParser::Parser.parse "post/#{params[:post]}"
+    # If it's a document then cool, if not route back to /
+    if document.nil? || document[:published] == false
+      redirect_to "/"
+    else
+      respond_to do |format|
+        format.json { render json: {} }
+        format.html {
+          @document = document
+        }
+      end
+    end
   end
 
 end

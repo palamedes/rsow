@@ -74,8 +74,9 @@ $(document).on('ready turbolinks:load', function() {
     var desktopHeight = $('div.desktop').height();
     var desktopWidth = $('div.desktop').width();
     setWindowSize($window, desktopHeight, desktopWidth);
-    // Push State
-    history.pushState({}, $window.find('a.header.item').html().trim(), "/"+$window.attr('id'))
+    // Push State and look for magic work "blog-" to make sure it gets slashed
+    var loc = $window.attr('id').replace('blog-', 'blog/');
+    history.pushState({}, $window.find('a.header.item').html().trim(), "/"+loc)
   }
 
   // Store the window location data in the data of the window object for use later
