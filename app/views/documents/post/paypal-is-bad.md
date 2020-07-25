@@ -5,8 +5,7 @@ title: Paypal put me in a limited state for suspicious activity
 excerpt: I'm a verified paypal member and have been since 2001.  They have my bank information and I have both sent and received thousands of dollars over the years through paypal.  I have never had any issues, until now.  I'm suddenly in a limited state due to suspicious activity. However, they can't/won't say what that suspicious activity actually is.
 layout: post
 tags:
-categories:
- - Rants!
+categories: Rants!
 image: /images/2019/paypal-bad.jpg
 gallery:
 ribbon:
@@ -17,8 +16,10 @@ duration:
 costs: 
 updates: 
 slug: blog-paypal-is-bad
-date: 2019-01-29
+date: Jan 29, 2019
 ---
+
+## Paypal put me in a limited state for suspicious activity
 
 __Note: I'm going to tell you how to fix this WITHOUT uploading all those private documents.  There are two ways.. keep reading.__
 
