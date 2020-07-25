@@ -11,7 +11,7 @@ module MarkdownParser
       unless template.nil?
         # markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
         # some Vars for the content
-        pageVariables = {}
+        document = {}
         pageContent = ''
         # What we use to know if we are working with the vars
         parsingVariables = false
@@ -40,20 +40,17 @@ module MarkdownParser
             value = parsedVariable.last.strip
             value = ActiveModel::Type::Boolean.new.cast(value) if value == 'true' || value == 'false'
             # Inject that into our pageVariables stripping white space
-            pageVariables[key] = value
+            document[key] = value
             # else we are parsing the rest of the page
           else
             # Do nothing with it.. at this point it must be content
             pageContent << line
           end
         end
-
+        # Inject the HTML into the document
+        document[:html] = Kramdown::Document.new(pageContent).to_html
         # Spit out our results
-        {
-            vars: pageVariables,
-            html: Kramdown::Document.new(pageContent).to_html
-        }
-
+        return document
       end
     end
   end
