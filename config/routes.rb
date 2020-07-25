@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Wildcard Page route which will show desktop and window
   get '/:page', to: "desktop#page"
+  get '/blog/:post', to: "desktop#post"
 
   # Default index route
   root 'desktop#index'
