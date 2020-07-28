@@ -43,7 +43,7 @@ class CreateCompanies < ActiveRecord::Migration[6.0]
       t.float :beta
       t.float :weekhigh52
       t.float :weeklow52
-      t.float :daymovingaverage52
+      t.float :daymovingaverage50
       t.float :daymovingaverage200
       t.float :sharesoutstanding
       t.float :sharesfloat
