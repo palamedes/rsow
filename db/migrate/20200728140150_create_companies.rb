@@ -3,64 +3,64 @@ class CreateCompanies < ActiveRecord::Migration[6.0]
     create_table :companies do |t|
 
       t.string :symbol,       null: false, index: true
-      t.string :asset_type,   null: false, default: 'Common Stock'
+      t.string :assettype,   null: false, default: 'common stock'
       t.string :name,         null: false
       t.text :description,    null: false
-      t.string :exchange,     null: false, default: 'NYSE'
-      t.string :currency,     null: false, default: 'USD'
-      t.string :country,      null: false, default: 'USA'
-      t.string :Sector
-      t.string :Industry
-      t.string :Address
-      t.string :FullTimeEmployees
-      t.string :FiscalYearEnd
-      t.string :LatestQuarter
-      t.float :MarketCapitalization
-      t.float :EBITDA
-      t.float :PERatio
-      t.float :PEGRatio
-      t.float :BookValue
-      t.float :DividendPerShare
-      t.float :DividendYield
-      t.float :EPS
-      t.float :RevenuePerShareTTM
-      t.float :ProfitMargin
-      t.float :OperatingMarginTTM
-      t.float :ReturnOnAssetsTTM
-      t.float :ReturnOnEquityTTM
-      t.float :RevenueTTM
-      t.float :GrossProfitTTM
-      t.float :DilutedEPSTTM
-      t.float :QuarterlyEarningsGrowthYOY
-      t.float :QuarterlyRevenueGrowthYOY
-      t.float :AnalystTargetPrice
-      t.float :TrailingPE
-      t.float :ForwardPE
-      t.float :PriceToSalesRatioTTM
-      t.float :PriceToBookRatio
-      t.float :EVToRevenue
-      t.float :EVToEBITDA
-      t.float :Beta
-      t.float :WeekHigh52
-      t.float :WeekLow52
-      t.float :DayMovingAverage52
-      t.float :DayMovingAverage200
-      t.float :SharesOutstanding
-      t.float :SharesFloat
-      t.float :SharesShort
-      t.float :SharesShortPriorMonth
-      t.float :ShortRatio
-      t.float :ShortPercentOutstanding
-      t.float :ShortPercentFloat
-      t.float :PercentInsiders
-      t.float :PercentInstitutions
-      t.float :ForwardAnnualDividendRate
-      t.float :ForwardAnnualDividendYield
-      t.float :PayoutRatio
-      t.float :DividendDate
-      t.float :ExDividendDate
-      t.string :LastSplitFactor
-      t.float :LastSplitDate
+      t.string :exchange,     null: false, default: 'nyse'
+      t.string :currency,     null: false, default: 'usd'
+      t.string :country,      null: false, default: 'usa'
+      t.string :sector
+      t.string :industry
+      t.string :address
+      t.string :fulltimeemployees
+      t.string :fiscalyearend
+      t.string :latestquarter
+      t.float :marketcapitalization
+      t.float :ebitda
+      t.float :peratio
+      t.float :pegratio
+      t.float :bookvalue
+      t.float :dividendpershare
+      t.float :dividendyield
+      t.float :eps
+      t.float :revenuepersharettm
+      t.float :profitmargin
+      t.float :operatingmarginttm
+      t.float :returnonassetsttm
+      t.float :returnonequityttm
+      t.float :revenuettm
+      t.float :grossprofitttm
+      t.float :dilutedepsttm
+      t.float :quarterlyearningsgrowthyoy
+      t.float :quarterlyrevenuegrowthyoy
+      t.float :analysttargetprice
+      t.float :trailingpe
+      t.float :forwardpe
+      t.float :pricetosalesratiottm
+      t.float :pricetobookratio
+      t.float :evtorevenue
+      t.float :evtoebitda
+      t.float :beta
+      t.float :weekhigh52
+      t.float :weeklow52
+      t.float :daymovingaverage52
+      t.float :daymovingaverage200
+      t.float :sharesoutstanding
+      t.float :sharesfloat
+      t.float :sharesshort
+      t.float :sharesshortpriormonth
+      t.float :shortratio
+      t.float :shortpercentoutstanding
+      t.float :shortpercentfloat
+      t.float :percentinsiders
+      t.float :percentinstitutions
+      t.float :forwardannualdividendrate
+      t.float :forwardannualdividendyield
+      t.float :payoutratio
+      t.float :dividenddate
+      t.float :exdividenddate
+      t.string :lastsplitfactor
+      t.float :lastsplitdate
 
       t.timestamps
     end
