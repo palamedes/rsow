@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Stocks Resource
   resources :stocks, only: [ :index, :show ]
-  get '/stocks/:id/valuation', to: "stocks#valuation", as: :valuation
+  get '/stocks/:id/valuation', to: "stocks#valuation", as: :valuation, defaults: {format: :json}
 
   # Wildcard Page route which will show desktop and window
   get '/blog/:post', to: "desktop#post", as: :post
