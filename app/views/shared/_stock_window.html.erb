@@ -20,8 +20,42 @@
         </div>
       </div>
     </div>
-    <div class="ui bottom attached segment">
-      Stock window
+    <div class="ui bottom attached segment stock-bot">
+      <div class="upper">
+
+        <div class="stocks">
+
+          <div class="ui celled list">
+            <% @companies.each do |company| %>
+              <div class="item">
+                <div class="content">
+                  <h3><%= company.symbol %></h3>
+                  <%= company.name %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+
+        </div>
+
+        <div class="chart">
+
+        </div>
+
+        <div class="history">
+          History
+        </div>
+
+      </div>
+      <div class="lower">
+        <div class="positions">
+          Positions
+        </div>
+        <div class="bank">
+          Bank
+        </div>
+      </div>
     </div>
   </div>
 </div>
