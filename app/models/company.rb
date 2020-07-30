@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
 
   # Relationships
-  has_many :valuations
+  has_many :valuations, -> { order(datetime: :desc) }
 
   # Validations
   validates :symbol, :assettype, :name, :description, :exchange, :currency, :country, presence: true
