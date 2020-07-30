@@ -20,4 +20,9 @@ class Company < ApplicationRecord
     end
   end
 
+  # Quickly get a company by symbol
+  def self.symbol symbol
+    self.where symbol: symbol.to_s.upcase
+  end
+
 end
