@@ -13,4 +13,9 @@ class Valuation < ApplicationRecord
     end
   end
 
+  # Dump data we need as a csv
+  def as_csv
+    [ datetime.to_s, low, open, close, high ]
+  end
+
 end
