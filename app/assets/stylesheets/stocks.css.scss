@@ -1,0 +1,49 @@
+
+div.stock-bot {
+  position: relative;
+  & > .upper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    & > div {
+      height: 100%;
+      &.stocks {
+        border-right: 1px solid #d4d4d4;
+        width: 10%;
+        float: left;
+      }
+      &.chart {
+        width: 70%;
+        float: left;
+      }
+      &.history {
+        border-left: 1px solid #d4d4d4;
+        width: 20%;
+        float: left;
+      }
+    }
+  }
+  & > .lower {
+    position: absolute;
+    height: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #d4d4d4;
+    & > div {
+      height: 100%;
+      &.positions {
+        width: 60%;
+        float: left;
+        border-right: 1px solid #d4d4d4;
+      }
+      &.bank {
+        width: 40%;
+        float: left;
+      }
+    }
+  }
+
+}
