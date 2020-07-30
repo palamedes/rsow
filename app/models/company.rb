@@ -22,7 +22,7 @@ class Company < ApplicationRecord
 
   # Quickly get a company by symbol
   def self.symbol symbol
-    self.where symbol: symbol.to_s.upcase
+    self.where(symbol: symbol.to_s.upcase).first_or_create
   end
 
 end
