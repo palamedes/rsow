@@ -83,11 +83,15 @@ ActiveRecord::Schema.define(version: 2020_07_28_193451) do
   create_table "valuations", force: :cascade do |t|
     t.bigint "company_id", null: false
     t.datetime "datetime", null: false
+    t.string "data_type", default: "quote", null: false
+    t.float "price"
     t.float "open", null: false
     t.float "high", null: false
     t.float "low", null: false
     t.float "close", null: false
     t.float "volume", null: false
+    t.float "change"
+    t.float "change_percent"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_valuations_on_company_id"
