@@ -6,6 +6,11 @@ class Valuation < ApplicationRecord
   # validations
   validates :datetime, :open, :high, :low, :close, :volume, presence: true
 
+  # Get me todays valuations
+  def self.today
+    where 'datetime between ? and ?', DateTime.now.midnight+9.hours, DateTime.now.midnight+16.hours
+  end
+
   # Dump to json just what we need
   def as_json(*)
     super.except('id', 'company_id', 'datetime', 'created_at', 'updated_at').tap do |hash|
