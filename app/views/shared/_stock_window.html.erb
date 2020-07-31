@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <div class="ui window segment maximized" id="stocks">
   <div class="ui compact segment">
@@ -27,7 +28,7 @@
 
           <div class="ui celled list">
             <% @companies.each do |company| %>
-              <div class="item">
+              <div class="item" data-symbol="<%= company.symbol %>">
                 <div class="content">
                   <h3><%= company.symbol %></h3>
                   <%= company.name %>
@@ -39,8 +40,8 @@
 
         </div>
 
-        <div class="chart">
-
+        <div id="chart" class="chart" data-url="<%= valuation_path('___') %>">
+          <!-- Chart Body should go here -->
         </div>
 
         <div class="history">
