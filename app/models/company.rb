@@ -1,10 +1,15 @@
 class Company < ApplicationRecord
 
   # Relationships
-  has_many :valuations, -> { order(datetime: :desc) }
+  has_many :valuations, -> { order(datetime: :asc) }
 
   # Validations
   validates :symbol, :assettype, :name, :description, :exchange, :currency, :country, presence: true
+
+  # Quickly get a company by symbol
+  def self.symbol symbol
+    self.where(symbol: symbol.to_s.upcase).first_or_create
+  end
 
   # When doing a .from_json {json} we have to do some special massaging of a couple fo the keys.
   def attributes=(hash)
@@ -18,11 +23,6 @@ class Company < ApplicationRecord
       # Send all those key:value pairs to this object before saving it
       send("#{key}=", value)
     end
-  end
-
-  # Quickly get a company by symbol
-  def self.symbol symbol
-    self.where(symbol: symbol.to_s.upcase).first_or_create
   end
 
 end
