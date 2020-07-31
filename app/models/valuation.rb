@@ -4,7 +4,9 @@ class Valuation < ApplicationRecord
   belongs_to :company
 
   # validations
-  validates :datetime, :open, :high, :low, :close, :volume, presence: true
+  validates :datetime, :data_type, :open, :high, :low, :close, :volume, presence: true
+  validates :data_type, inclusion: { in: %w(quote intraday daily weekly monthly),
+                                     message "%{value} is not a valid data type"}
 
   # Get me todays valuations
   def self.today
