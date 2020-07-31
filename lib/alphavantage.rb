@@ -35,6 +35,7 @@ module Alphavantage
   end
 
   # Get the intraday information for a given company at a 1 minute time scale
+  # NOTE:  Okay I'm starting to realize that this isn't useful.  It appears to be delayed by a full day..  bleh.
   class IntradayAPI
     # AlphavantageAPI::Intraday.get 'IBM'
     def initialize symbol
@@ -51,8 +52,8 @@ module Alphavantage
       # Upcase that symbol just incase.
       symbol = symbol.upcase
       # Build our URL around what we are getting /// @TODO MOVE KEY OUT OF HERE Also not sure if I should use full or not.. probably not.
-      url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=#{symbol}&interval=1min&outputsize=full&apikey=#{alphavantage_apikey}"
-      # url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=#{symbol}&interval=1min&outputsize=compact&apikey=#{alphavantage_apikey}"
+      # url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=#{symbol}&interval=1min&outputsize=full&apikey=#{alphavantage_apikey}"
+      url = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=#{symbol}&interval=1min&outputsize=compact&apikey=#{alphavantage_apikey}"
       # Go get that data from the url above
       @response = Faraday.get url
       # Crunch it into an object
@@ -60,6 +61,17 @@ module Alphavantage
       # Now lets just get the time series
       @timeSeries = @jsonResponse['Time Series (1min)']
       # Now iterate through the time series arrays and dig out the datetime and values
+    end
+    # Give us the response object
+    def response
+      @response
+    end
+    # Get us the timeSeries
+    def timeSeries
+      @timeSeries
+    end
+    # Save timeSeries information as valuations
+    def parseResponse
       @timeSeries.each do |datetime, value|
         # Using our datetime
         @valuation = Valuation.where(company: @company, datetime: datetime.to_time).first_or_create
@@ -71,14 +83,7 @@ module Alphavantage
         @valuation.save
       end
     end
-    # Give us the response object
-    def response
-      @response
-    end
-    # Get us the timeSeries
-    def timeSeries
-      @timeSeries
-    end
+
   end
 
 end
