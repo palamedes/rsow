@@ -23,12 +23,6 @@ module AlphavantageAPI
       url = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=#{symbol}&apikey=#{alphavantage_apikey}"
       # Go get that data
       @response = Faraday.get url
-      # Load our company or create a new one
-      @company = Company.where(symbol: symbol).first_or_create
-      # Stuff the information into the company
-      @company.from_json @response.body
-      # Save that bad boy.
-      @company.save
     end
 
   end
@@ -50,7 +44,7 @@ module AlphavantageAPI
       # Get a response
       @response = Faraday.get url
       # Go through the response and pass out the data
-      # @TODO Add error checking on the response..
+      # @TODO Add error checking on the response.. because.. geez.. this could be ugly.. uglier I mean.. damn..
       @price = JSON.parse(@response.as_json['body'])['Global Quote']['05. price'].to_f
       @open = JSON.parse(@response.as_json['body'])['Global Quote']['02. open'].to_f
       @high = JSON.parse(@response.as_json['body'])['Global Quote']['03. high'].to_f
