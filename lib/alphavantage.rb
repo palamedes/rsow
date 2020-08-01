@@ -96,13 +96,13 @@ module AlphavantageAPI
     def parseResponse
       @timeSeries.each do |datetime, value|
         # Using our datetime
-        @valuation = Valuation.where(company: @company, datetime: datetime.to_time).first_or_create
-        @valuation.open = value['1. open']
-        @valuation.high = value['2. high']
-        @valuation.low = value['3. low']
-        @valuation.close = value['4. close']
-        @valuation.volume = value['5. volume']
-        @valuation.save
+        # @valuation = Valuation.where(company: @company, datetime: datetime.to_time).first_or_create
+        # @valuation.open = value['1. open']
+        # @valuation.high = value['2. high']
+        # @valuation.low = value['3. low']
+        # @valuation.close = value['4. close']
+        # @valuation.volume = value['5. volume']
+        # @valuation.save
       end
     end
 
