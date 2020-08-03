@@ -5,7 +5,6 @@ class Valuation < ApplicationRecord
 
   # validations
   validates :datetime, :price, :volume, presence: true
-  validates :data_type, inclusion: { in: %w(quote intraday daily weekly monthly) }
 
   # Get me todays valuations
   def self.today
