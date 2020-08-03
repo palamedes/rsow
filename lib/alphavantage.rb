@@ -7,6 +7,16 @@
 # Example of how to pull Company data using API.
 # https://www.alphavantage.co/query?function=OVERVIEW&symbol=ccl&apikey={apikey}
 
+
+#
+#
+#
+#  NOTE: Abandoning this.  Alphavantage is worthless in that their stocks are always like 16 hours behind.  By design.  It's more for historical use.
+#
+#
+#
+
+
 module AlphavantageAPI
 
   # Get the information for a given company and stuff it into the db.
