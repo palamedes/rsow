@@ -4,9 +4,8 @@ class Valuation < ApplicationRecord
   belongs_to :company
 
   # validations
-  validates :datetime, :data_type, :open, :high, :low, :close, :volume, presence: true
-  validates :data_type, inclusion: { in: %w(quote intraday daily weekly monthly),
-                                     message "%{value} is not a valid data type"}
+  validates :datetime, :price, :volume, presence: true
+  validates :data_type, inclusion: { in: %w(quote intraday daily weekly monthly) }
 
   # Get me todays valuations
   def self.today
@@ -22,7 +21,7 @@ class Valuation < ApplicationRecord
 
   # Dump data we need as a csv
   def as_csv
-    [ datetime.to_s, low, open, close, high ]
+    [ datetime.to_s, price, volume ]
   end
 
 end
