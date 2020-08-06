@@ -40,6 +40,8 @@ div.ui.window {
   border: 0;
   box-shadow: none;
   background: transparent;
+  position: absolute;
+  z-index: 500;
 
   .compact.segment {
     width: 100%;
