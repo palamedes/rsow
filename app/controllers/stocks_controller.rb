@@ -7,9 +7,14 @@ class StocksController < ApplicationController
     @companies = Company.all
 
     respond_to do |format|
-      format.json { render json: {} }
-      format.html {
+      format.json {
+        html = render_to_string action: :index, layout: false, formats: [:html]
+        render json: {
+            document: {slug: 'stocks'},
+            html: html
+        }
       }
+      format.html {}
     end
   end
 
@@ -19,5 +24,20 @@ class StocksController < ApplicationController
 
   end
 
+
+  # [GET] /stocks/{:id|:symbol}/valuation.json
+  # Get just the valuation for a given company ID or company symbol
+  def valuation
+    company = Company.symbol params[:symbol]
+
+    redirect_to :back if company.new_record?
+
+    respond_to do |format|
+      format.json {
+        render json:
+          company.valuations.today.map { |v| v.as_csv }
+      }
+    end
+  end
 
 end
