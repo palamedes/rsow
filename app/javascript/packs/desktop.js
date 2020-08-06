@@ -173,8 +173,44 @@ $(document).on('ready turbolinks:load', function() {
 
   /* Clickable Events */
 
+  // a.item clicks -- pull it in via json if we can, or if active and hiddenthen just unhide, or minimized/maximize..etc..
+  $('a.item').click(function(event) {
+    // if this item has the follow class, then fire the anchor off just like normal.
+    // Otherwise we are going to try to json first, then if that fails.. add the class and fire the event.
+    if (!$(this).hasClass('follow')) {
+      // Prevent event
+      event.preventDefault();
+
+      // Attempt to load the window via JSON
+      $.ajax({
+        dataType: "json",
+        url: $(this).attr('href'),
+        success: function(data) {
+          // Success!  Now create our new window object
+          var obj = $(data.html).appendTo('div.desktop');
+          // Make sure it's both draggable and resizable
+          $(obj).draggable(draggableWindowArguments);
+          $(obj).resizable(resizableWindowArguments);
+          // Update our start bar
+          updateStartbarLinks();
+        },
+        fail: function(data) {
+          // We have failed.. Go to the hard location.
+          window.location = $(event.target).attr('href');
+        },
+      });
+
+      // if the item is not jsonable, then fire the event.
+      // If the item is jsonable, then load it.
+      // If the item is active and hidden, then show it
+      // If the item is active and maximized, then restore it
+      // If the item is active and restored, then maximize it
+
+
+    }
+  });
   // RESTORE BUTTON at top right of window
-  $('button.restore.window').click(function() {
+  $(document).on('click', 'button.restore.window', function() {
     var $window = $(this).parents('div.ui.window');
     restoreWindow($window);
     $(this).siblings('.maximize').removeClass('hidden');
@@ -182,13 +218,21 @@ $(document).on('ready turbolinks:load', function() {
   });
 
   // RESTORE BUTTON at top right of window
-  $('button.maximize.window').click(function() {
+  $(document).on('click', 'button.maximize.window', function () {
     var $window = $(this).parents('div.ui.window');
     setWindowLocationData($window);
     maximizeWindow($window);
     $(this).siblings('.restore').removeClass('hidden');
     $(this).addClass('hidden');
   });
+
+  // MINIMIZE BUTTON at top right of window
+  $(document).on('click', 'button.minimize.window', function() {
+    var $window = $(this).parents('div.ui.window');
+    $window.addClass('hidden');
+  });
+
+  /* STOCK Charting stuff.. */
 
   // Only try to draw the chart if there is a chart...
   if ($('#chart'.length)) {
