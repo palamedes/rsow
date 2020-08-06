@@ -195,6 +195,8 @@ $(document).on('ready turbolinks:load', function() {
           // Make sure it's both draggable and resizable
           $(obj).draggable(draggableWindowArguments);
           $(obj).resizable(resizableWindowArguments);
+          // Set the window as maximized because we start them all that way.
+          maximizeWindow($(obj));
           // Update our start bar
           updateStartbarLinks();
         },
