@@ -61,16 +61,18 @@ $(document).on('ready turbolinks:load', function() {
 
   // Here is how we restore a window
   var restoreWindow = function($window) {
-    var windowLocation = getWindowLocationData($window);
-    setWindowPosition($window, windowLocation['top'], windowLocation['left']);
-    setWindowSize($window, windowLocation['height'], windowLocation['width']);
-    // Pop State
-    history.pushState({}, "", "/");
+    if ($window.length) {
+      var windowLocation = getWindowLocationData($window);
+      setWindowPosition($window, windowLocation['top'], windowLocation['left']);
+      setWindowSize($window, windowLocation['height'], windowLocation['width']);
+      // Pop State
+      history.pushState({}, "", "/");
+    }
   }
 
   // Here is how we maximize a window
   var maximizeWindow = function($window) {
-    if ($window.lengh) {
+    if ($window.length) {
       setWindowPosition($window, 0, 0);
       var desktopHeight = $('div.desktop').height();
       var desktopWidth = $('div.desktop').width();
@@ -83,18 +85,24 @@ $(document).on('ready turbolinks:load', function() {
 
   // Store the window location data in the data of the window object for use later
   var setWindowLocationData = function($window) {
-    $window.data('top', $window.position()['top']);
-    $window.data('left', $window.position()['left']);
-    $window.data('width', $window.width());
-    $window.data('height', $window.height());
+    if ($window.length) {
+      $window.data('top', $window.position()['top']);
+      $window.data('left', $window.position()['left']);
+      $window.data('width', $window.width());
+      $window.data('height', $window.height());
+    }
   }
   // Get the window location and return it
   var getWindowLocationData = function($window) {
-    return {
-      'top': $window.data('top') || 0,
-      'left' : $window.data('left') || 0,
-      'width' : $window.data('width') || 900,
-      'height' : $window.data('height') || 600
+    if ($window.length) {
+      return {
+        'top': $window.data('top') || 0,
+        'left' : $window.data('left') || 0,
+        'width' : $window.data('width') || 800,
+        'height' : $window.data('height') || 500
+      }
+    } else {
+      return { 'top': 0, 'left': 0, 'width': 800, 'height': 500 }
     }
   }
 
