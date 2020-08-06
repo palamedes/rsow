@@ -78,13 +78,19 @@
 
     <%= javascript_pack_tag 'semantic' %>
     <%= javascript_pack_tag 'lightbox' %>
+    <%= javascript_pack_tag 'desktop' %>
 
     <%= yield(:script) if content_for?(:script) %>
 
   </head>
 
   <body>
+
+  <div class="desktop">
+
     <%= yield %>
+
+  </div>
 
     <%= render 'shared/footer' %>
   </body>
