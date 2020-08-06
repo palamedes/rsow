@@ -93,8 +93,8 @@ $(document).on('ready turbolinks:load', function() {
     return {
       'top': $window.data('top') || 0,
       'left' : $window.data('left') || 0,
-      'width' : $window.data('width') || 800,
-      'height' : $window.data('height') || 500
+      'width' : $window.data('width') || 900,
+      'height' : $window.data('height') || 600
     }
   }
 
