@@ -23,6 +23,10 @@ $(document).on('ready turbolinks:load', function() {
   var draggableWindowArguments = {
     handle: '.headbar',
     containment: '.desktop',
+    start: function(drag, ui) {
+      $('div.window').css('zIndex', 400);
+      $(this).css('zIndex', 500);
+    },
     stop: function(drag, ui) {
       setWindowLocationData($(this));
     }
