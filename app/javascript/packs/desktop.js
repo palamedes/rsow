@@ -136,6 +136,10 @@ $(document).on('ready turbolinks:load', function() {
     });
 
     // @TODO if we dont have one, then we need to create an entry for it..
+
+
+
+
   }
 
   // @TODO if someone clicks BACK after restoring a window it should go back to previous state of window?
@@ -196,7 +200,7 @@ $(document).on('ready turbolinks:load', function() {
   /* Clickable Events */
 
   // a.item clicks -- pull it in via json if we can, or if active and hiddenthen just unhide, or minimized/maximize..etc..
-  $('a').click(function(event) {
+  $(document).on('click', 'a', function() {
     // if this item has the follow class, then fire the anchor off just like normal.
     // Otherwise we are going to try to json first, then if that fails.. add the class and fire the event.
     if (!$(this).hasClass('follow')) {
@@ -223,8 +227,6 @@ $(document).on('ready turbolinks:load', function() {
           maximizeWindow($(obj));
           // Update our start bar
           updateStartbarLinks();
-          // Add something to the start bar for this window
-
         },
         fail: function(data) {
           // We have failed.. Go to the hard location.
