@@ -129,17 +129,21 @@ $(document).on('ready turbolinks:load', function() {
   }
 
   // Iterate through each window open.. Find the start bar link for it and make sure that is set to active.
-  var updateStartbarLinks = function() {
+  var updateStartbarLinks = function(data) {
     $('div.window').each(function() {
       var id = $(this).attr('id');
       $('div.start-bar a.item[data-slug='+id+']').addClass('active');
     });
 
-    // @TODO if we dont have one, then we need to create an entry for it..
-
-
-
-
+    // If we are being sent data then we likely needs to create an item in the task bar
+    if (data != null) {
+      // If there isn't a start bar item, create it
+      if (!$('div.start-bar a.item[data-slug='+data['slug']+']').length) {
+        // Inject a link to the start bar right before the right menu
+        var html = '<a href="'+data['slug']+'" class="item active" data-slug="'+data['slug']+'"><i class="'+data['icon']+' icon"></i>'+data['title']+'</a>';
+        $(html).insertBefore('div.start-bar div.right.menu');
+      }
+    }
   }
 
   // @TODO if someone clicks BACK after restoring a window it should go back to previous state of window?
@@ -226,7 +230,7 @@ $(document).on('ready turbolinks:load', function() {
           // Set the window as maximized because we start them all that way.
           maximizeWindow($(obj));
           // Update our start bar
-          updateStartbarLinks();
+          updateStartbarLinks(data['document']);
         },
         fail: function(data) {
           // We have failed.. Go to the hard location.
