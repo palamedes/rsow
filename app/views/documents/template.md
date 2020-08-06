@@ -17,6 +17,7 @@ duration:
 costs: 
 updates: 
 slug: template
+icon: 
 ---
 
 published: true|false
@@ -76,6 +77,8 @@ updates:
 slug: {unique name}
  ^ Typically the file name, this is the name that will be assigned to the document for desktop tracking purposes
 
+icon: {small icon name}
+ ^ This is the semantic icon string used to create the icon in the task bar and in the window - defaults to "file outline"
 
 
 
