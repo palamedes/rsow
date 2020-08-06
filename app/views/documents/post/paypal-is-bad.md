@@ -17,6 +17,7 @@ costs:
 updates: 
 slug: blog-paypal-is-bad
 date: Jan 29, 2019
+icon: file alternate outline
 ---
 
 ## Paypal put me in a limited state for suspicious activity

@@ -7,6 +7,7 @@ tags:
 categories:
 private: false
 slug: palamedes
+icon: file outline
 ---
 
 

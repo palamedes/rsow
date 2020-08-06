@@ -11,6 +11,7 @@ private: false
 allow_comments: false
 slug: resume
 updates: 07/24/2020
+icon: file outline
 ---
 
 [![Jason Ellis](/images/photos/me/jason-ellis-square.png){: .scaled .padded .left}](/images/photos/me/jason-ellis-square.png "Jason Ellis"){: .float .right}

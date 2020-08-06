@@ -9,6 +9,7 @@ image:
 private: true
 allow_comments: false
 slug: about
+icon: address book
 ---
 
 ![Email Address](/images/1972/email.gif){: .float .right .padded .bottom}
