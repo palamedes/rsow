@@ -24,8 +24,7 @@ $(document).on('ready turbolinks:load', function() {
     handle: '.headbar',
     containment: '.desktop',
     start: function(drag, ui) {
-      $('div.window').css('zIndex', 400);
-      $(this).css('zIndex', 500);
+      bringToFront($(this));
     },
     stop: function(drag, ui) {
       setWindowLocationData($(this));
@@ -63,20 +62,36 @@ $(document).on('ready turbolinks:load', function() {
     $window.css('left', left);
   }
 
+  // This is how we bring windows to the fore
+  var bringToFront = function(dis) {
+    $('div.window').css('zIndex', 400);
+    $(dis).css('zIndex', 500);
+  }
+
   // Here is how we restore a window
   var restoreWindow = function($window) {
     if ($window.length) {
+      // Remove class
+      $window.removeClass('maximized');
+      // Get the location data from the window
       var windowLocation = getWindowLocationData($window);
+      // Set it..
       setWindowPosition($window, windowLocation['top'], windowLocation['left']);
       setWindowSize($window, windowLocation['height'], windowLocation['width']);
-      // Pop State
+      // Pop State from History
       history.pushState({}, "", "/");
+      // Update header buttons accordingly
+      $window.find('.maximize').removeClass('hidden');
+      $window.find('.restore').addClass('hidden');
     }
   }
 
   // Here is how we maximize a window
   var maximizeWindow = function($window) {
     if ($window.length) {
+      // Add class
+      $window.addClass('maximized');
+      // Set window position and size
       setWindowPosition($window, 5, 5);
       var desktopHeight = $('div.desktop').height();
       var desktopWidth = $('div.desktop').width();
@@ -84,6 +99,9 @@ $(document).on('ready turbolinks:load', function() {
       // Push State and look for magic work "blog-" to make sure it gets slashed
       var loc = $window.attr('id').replace('blog-', 'blog/');
       history.pushState({}, $window.find('.active.header.item').html().trim(), "/"+loc)
+      // Update header buttons accordingly
+      $window.find('.restore').removeClass('hidden');
+      $window.find('.maximize').addClass('hidden');
     }
   }
 
@@ -178,14 +196,20 @@ $(document).on('ready turbolinks:load', function() {
   /* Clickable Events */
 
   // a.item clicks -- pull it in via json if we can, or if active and hiddenthen just unhide, or minimized/maximize..etc..
-  $('a.item').click(function(event) {
+  $('a').click(function(event) {
     // if this item has the follow class, then fire the anchor off just like normal.
     // Otherwise we are going to try to json first, then if that fails.. add the class and fire the event.
     if (!$(this).hasClass('follow')) {
       // Prevent event
       event.preventDefault();
 
-      // Attempt to load the window via JSON
+      // If the item is active and hidden, then show it
+      // If the item is active and maximized, then restore it
+      // If the item is active and restored, then maximize it
+
+
+
+      // If none of the above then attempt to load the window via JSON
       $.ajax({
         dataType: "json",
         url: $(this).attr('href'),
@@ -199,6 +223,8 @@ $(document).on('ready turbolinks:load', function() {
           maximizeWindow($(obj));
           // Update our start bar
           updateStartbarLinks();
+          // Add something to the start bar for this window
+
         },
         fail: function(data) {
           // We have failed.. Go to the hard location.
@@ -206,21 +232,12 @@ $(document).on('ready turbolinks:load', function() {
         },
       });
 
-      // if the item is not jsonable, then fire the event.
-      // If the item is jsonable, then load it.
-      // If the item is active and hidden, then show it
-      // If the item is active and maximized, then restore it
-      // If the item is active and restored, then maximize it
-
-
     }
   });
   // RESTORE BUTTON at top right of window
   $(document).on('click', 'button.restore.window', function() {
     var $window = $(this).parents('div.ui.window');
     restoreWindow($window);
-    $(this).siblings('.maximize').removeClass('hidden');
-    $(this).addClass('hidden');
   });
 
   // RESTORE BUTTON at top right of window
@@ -228,14 +245,27 @@ $(document).on('ready turbolinks:load', function() {
     var $window = $(this).parents('div.ui.window');
     setWindowLocationData($window);
     maximizeWindow($window);
-    $(this).siblings('.restore').removeClass('hidden');
-    $(this).addClass('hidden');
   });
 
   // MINIMIZE BUTTON at top right of window
   $(document).on('click', 'button.minimize.window', function() {
     var $window = $(this).parents('div.ui.window');
     $window.addClass('hidden');
+  });
+
+  // If window bar header clicked bring it to focus
+  $(document).on('click', '.headbar', function() {
+    bringToFront($(this).parents('div.ui.window'));
+  });
+
+  // If window bar header double clicked, maximize/minimize
+  $(document).on('dblclick', '.headbar', function() {
+    $window = $(this).parents('div.ui.window');
+    if ($window.hasClass('maximized')) {
+      restoreWindow($window);
+    } else {
+      maximizeWindow($window);
+    }
   });
 
   /* STOCK Charting stuff.. */
