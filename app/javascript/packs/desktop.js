@@ -7,8 +7,8 @@ $(document).on('ready turbolinks:load', function() {
   // Set Defaults for a resizable window
   var resizableWindowArguments = {
     containment: '.desktop',
-    minHeight: 300,
-    minWidth: 500,
+    minHeight: 400,
+    minWidth: 700,
     handles: 'se',
     resize: function(resize, ui) {
       adjustInternalWindowHeight($(this), ui.size.height);
