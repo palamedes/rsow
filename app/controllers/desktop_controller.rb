@@ -19,7 +19,10 @@ class DesktopController < ApplicationController
       respond_to do |format|
         format.json {
           html = render_to_string action: :page, locals: { page: params[:page] }, layout: false, formats: [:html]
-          render json: { html: html }
+          render json: {
+              document: @document,
+              html: html
+          }
         }
         format.html {}
       end
