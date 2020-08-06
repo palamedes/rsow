@@ -77,7 +77,7 @@ $(document).on('ready turbolinks:load', function() {
   // Here is how we maximize a window
   var maximizeWindow = function($window) {
     if ($window.length) {
-      setWindowPosition($window, 0, 0);
+      setWindowPosition($window, 5, 5);
       var desktopHeight = $('div.desktop').height();
       var desktopWidth = $('div.desktop').width();
       setWindowSize($window, desktopHeight, desktopWidth);
@@ -100,13 +100,13 @@ $(document).on('ready turbolinks:load', function() {
   var getWindowLocationData = function($window) {
     if ($window.length) {
       return {
-        'top': $window.data('top') || 0,
-        'left' : $window.data('left') || 0,
+        'top': $window.data('top') || 5,
+        'left' : $window.data('left') || 5,
         'width' : $window.data('width') || 800,
         'height' : $window.data('height') || 500
       }
     } else {
-      return { 'top': 0, 'left': 0, 'width': 800, 'height': 500 }
+      return { 'top': 5, 'left': 5, 'width': 800, 'height': 500 }
     }
   }
 
