@@ -144,13 +144,17 @@ $(document).on('ready turbolinks:load', function() {
         $(html).insertBefore('div.start-bar div.right.menu');
       }
     }
+
+    console.log('here?');
+    console.log(data);
+
+    // if there is a method in the slugFunctions by this slug name.. run it.
+    if (data != null && data['slug'] != null && typeof slugFunctions[data['slug']] === 'function') {
+      slugFunctions[data['slug']]();
+    }
   }
 
   // @TODO if someone clicks BACK after restoring a window it should go back to previous state of window?
-
-  // @TODO json call to get a new window of content
-
-  // @TODO start bar buttons should TRY to pull via JSON
 
   // @TODO X window button should close the window, and if we are at that location then we should default back
   // to desktop cleanly without other windows closing.
@@ -158,9 +162,6 @@ $(document).on('ready turbolinks:load', function() {
   // @TODO Minimize window should effectively close the window or "minimize" it, but leave an item in the
   // start bar letting people know that that window had been opened.  If it's an already existing static button
   // like the about page, then it should just highlight that button as if it were still open.
-
-  // @TODO If there is no existing button that corresponds to the opened window, add one and that's now your
-  // new app icon for that instance of that window.
 
   // @TODO Question mark top right should give you some information about the window you have opened.. that means
   // each window could have different or similar information based on what the information is.  Or defined by MD?
@@ -274,50 +275,59 @@ $(document).on('ready turbolinks:load', function() {
     }
   });
 
+
+  /** SLUG FUNCTIONS
+   *  Okay these are unique in that some slugs will have custom code..  that code goes here and will be called
+   *  when the slug is loaded.. but only when it's loaded.
+   */
+  var slugFunctions = [];
+
   /* STOCK Charting stuff.. */
 
   // Only try to draw the chart if there is a chart...
-  if ($('#chart'.length)) {
-    // https://developers.google.com/chart/interactive/docs/gallery/candlestickchart#data-format
-    function drawChart() {
-      // Setup our data
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');
-      data.addColumn('number', 'Dogs');
+  slugFunctions['stocks'] = function() {
+    if ($('#chart'.length)) {
+      // https://developers.google.com/chart/interactive/docs/gallery/candlestickchart#data-format
+      function drawChart() {
+        // Setup our data
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'X');
+        data.addColumn('number', 'Dogs');
 
-      data.addRows([
-        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
-        [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
-        [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
-        [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
-        [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
-        [30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
-        [36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
-        [42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
-        [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
-        [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
-        [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
-        [66, 70], [67, 72], [68, 75], [69, 80]
-      ]);
+        data.addRows([
+          [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
+          [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
+          [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
+          [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
+          [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
+          [30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
+          [36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
+          [42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
+          [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
+          [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
+          [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
+          [66, 70], [67, 72], [68, 75], [69, 80]
+        ]);
 
-      var options = {
-        hAxis: {
-          title: 'Time'
-        },
-        vAxis: {
-          title: 'Popularity'
+        var options = {
+          hAxis: {
+            title: 'Time'
+          },
+          vAxis: {
+            title: 'Popularity'
+          }
+        };
+
+        if ($('#chart').length) {
+          var chart = new google.visualization.LineChart(document.getElementById('chart'));
+          chart.draw(data, options);
         }
+
       };
-
-      if ($('#chart').length) {
-        var chart = new google.visualization.LineChart(document.getElementById('chart'));
-        chart.draw(data, options);
-      }
-
-    };
-    // Now init and draw that chart
-    google.charts.load('current', {packages: ['corechart', 'line']});
-    google.charts.setOnLoadCallback(drawChart);
+      // Now init and draw that chart
+      google.charts.load('current', {packages: ['corechart', 'line']});
+      google.charts.setOnLoadCallback(drawChart);
+    }
   }
 
 
