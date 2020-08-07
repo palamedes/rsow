@@ -130,10 +130,14 @@ $(document).on('ready turbolinks:load', function() {
 
   // Iterate through each window open.. Find the start bar link for it and make sure that is set to active.
   var updateStartbarLinks = function(data) {
+    // First set all task bar items that have a window to active
     $('div.window').each(function() {
-      var id = $(this).attr('id');
-      $('div.start-bar a.item[data-slug='+id+']').addClass('active');
+      var slug = $(this).data('slug');
+      $('div.start-bar a.item[data-slug='+slug+']').addClass('active');
     });
+
+    // @TODO If we go directly to a link we need the task bar item to be created..
+    //    Refactor the below to remove the need for "data"... just use dom data instead
 
     // If we are being sent data then we likely needs to create an item in the task bar
     if (data != null) {
@@ -143,15 +147,26 @@ $(document).on('ready turbolinks:load', function() {
         var html = '<a href="'+data['slug']+'" class="item active" data-slug="'+data['slug']+'"><i class="'+data['icon']+' icon"></i>'+data['title']+'</a>';
         $(html).insertBefore('div.start-bar div.right.menu');
       }
+
+      // if there is a method in the slugFunctions by this slug name.. run it.
+      // @TODO This needs to be in it's own method somewhere I think.
+      if (data['slug'] != null && typeof slugFunctions[data['slug']] === 'function') {
+        slugFunctions[data['slug']]();
+      }
     }
 
-    console.log('here?');
-    console.log(data);
+    // Now iterate through out active task bar items and make sure the window still exists
+    // If the window is removed, destroy the task bar item or remove active if it's static.
+    $('div.start-bar a.item.active').each(function() {
+      if (!$('div.window[data-slug='+$(this).data('slug')+']').length) {
+        if ($(this).hasClass('static')) {
+          $(this).removeClass('active');
+        } else {
+          $(this).remove();
+        }
+      }
+    });
 
-    // if there is a method in the slugFunctions by this slug name.. run it.
-    if (data != null && data['slug'] != null && typeof slugFunctions[data['slug']] === 'function') {
-      slugFunctions[data['slug']]();
-    }
   }
 
   // @TODO if someone clicks BACK after restoring a window it should go back to previous state of window?
@@ -241,6 +256,7 @@ $(document).on('ready turbolinks:load', function() {
 
     }
   });
+
   // RESTORE BUTTON at top right of window
   $(document).on('click', 'button.restore.window', function() {
     var $window = $(this).parents('div.ui.window');
@@ -258,6 +274,17 @@ $(document).on('ready turbolinks:load', function() {
   $(document).on('click', 'button.minimize.window', function() {
     var $window = $(this).parents('div.ui.window');
     $window.addClass('hidden');
+  });
+
+  // CLOSE BUTTON at top right of window
+  $(document).on('click', 'button.close.window', function() {
+    var $window = $(this).parents('div.ui.window');
+    // Destroy window from dom
+    $window.remove();
+    // Nowupdate the start bar to remove or whatever the task
+    updateStartbarLinks();
+    // Pop State from History
+    history.pushState({}, "", "/");
   });
 
   // If window bar header clicked bring it to focus
