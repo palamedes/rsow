@@ -1,6 +1,12 @@
 
 $(document).on('ready turbolinks:load', function() {
 
+  /** SLUG FUNCTIONS
+   *  Okay these are unique in that some slugs will have custom code..  that code goes here and will be called
+   *  when the slug is loaded.. but only when it's loaded.
+   */
+  var slugFunctions = [];
+
   // Turn on all dropdowns.
   $('.ui.dropdown').dropdown();
 
@@ -133,27 +139,17 @@ $(document).on('ready turbolinks:load', function() {
     // First set all task bar items that have a window to active
     $('div.window').each(function() {
       var slug = $(this).data('slug');
-      $('div.start-bar a.item[data-slug='+slug+']').addClass('active');
-    });
-
-    // @TODO If we go directly to a link we need the task bar item to be created..
-    //    Refactor the below to remove the need for "data"... just use dom data instead
-
-    // If we are being sent data then we likely needs to create an item in the task bar
-    if (data != null) {
-      // If there isn't a start bar item, create it
-      if (!$('div.start-bar a.item[data-slug='+data['slug']+']').length) {
-        // Inject a link to the start bar right before the right menu
-        var html = '<a href="'+data['slug']+'" class="item active" data-slug="'+data['slug']+'"><i class="'+data['icon']+' icon"></i>'+data['title']+'</a>';
+      if ($('div.start-bar a.item[data-slug='+slug+']').length) {
+        $('div.start-bar a.item[data-slug='+slug+']').addClass('active');
+      } else {
+        var html = '<a href="'+$(this).data('slug')+'" class="item active" data-slug="'+$(this).data('slug')+'"><i class="'+$(this).data('icon')+' icon"></i>'+$(this).data('title')+'</a>';
         $(html).insertBefore('div.start-bar div.right.menu');
       }
-
       // if there is a method in the slugFunctions by this slug name.. run it.
-      // @TODO This needs to be in it's own method somewhere I think.
-      if (data['slug'] != null && typeof slugFunctions[data['slug']] === 'function') {
-        slugFunctions[data['slug']]();
+      if ($(this).data('slug') != null && typeof slugFunctions[$(this).data('slug')] === 'function') {
+        slugFunctions[$(this).data('slug')]();
       }
-    }
+    });
 
     // Now iterate through out active task bar items and make sure the window still exists
     // If the window is removed, destroy the task bar item or remove active if it's static.
@@ -246,7 +242,7 @@ $(document).on('ready turbolinks:load', function() {
           // Set the window as maximized because we start them all that way.
           maximizeWindow($(obj));
           // Update our start bar
-          updateStartbarLinks(data['document']);
+          updateStartbarLinks();
         },
         fail: function(data) {
           // We have failed.. Go to the hard location.
@@ -302,12 +298,6 @@ $(document).on('ready turbolinks:load', function() {
     }
   });
 
-
-  /** SLUG FUNCTIONS
-   *  Okay these are unique in that some slugs will have custom code..  that code goes here and will be called
-   *  when the slug is loaded.. but only when it's loaded.
-   */
-  var slugFunctions = [];
 
   /* STOCK Charting stuff.. */
 
