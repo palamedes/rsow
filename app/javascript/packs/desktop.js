@@ -167,13 +167,6 @@ $(document).on('ready turbolinks:load', function() {
 
   // @TODO if someone clicks BACK after restoring a window it should go back to previous state of window?
 
-  // @TODO X window button should close the window, and if we are at that location then we should default back
-  // to desktop cleanly without other windows closing.
-
-  // @TODO Minimize window should effectively close the window or "minimize" it, but leave an item in the
-  // start bar letting people know that that window had been opened.  If it's an already existing static button
-  // like the about page, then it should just highlight that button as if it were still open.
-
   // @TODO Question mark top right should give you some information about the window you have opened.. that means
   // each window could have different or similar information based on what the information is.  Or defined by MD?
 
@@ -223,32 +216,44 @@ $(document).on('ready turbolinks:load', function() {
       // Prevent event
       event.preventDefault();
 
-      // If the item is active and hidden, then show it
-      // If the item is active and maximized, then restore it
-      // If the item is active and restored, then maximize it
-
-
-
-      // If none of the above then attempt to load the window via JSON
-      $.ajax({
-        dataType: "json",
-        url: $(this).attr('href'),
-        success: function(data) {
-          // Success!  Now create our new window object
-          var obj = $(data.html).appendTo('div.desktop');
-          // Make sure it's both draggable and resizable
-          $(obj).draggable(draggableWindowArguments);
-          $(obj).resizable(resizableWindowArguments);
-          // Set the window as maximized because we start them all that way.
-          maximizeWindow($(obj));
-          // Update our start bar
-          updateStartbarLinks();
-        },
-        fail: function(data) {
-          // We have failed.. Go to the hard location.
-          window.location = $(event.target).attr('href');
-        },
-      });
+      // Define our $window
+      var $window = $('div.window[data-slug='+$(this).data('slug')+']');
+      // Check to see if we have a window with this slug
+      if ($window.length) {
+        // Bring the window to front
+        bringToFront($window);
+        // If the item is active and hidden, then show it
+        if ($window.hasClass('hidden')) {
+          $window.removeClass('hidden');
+        // If the item is active and maximized, then restore it
+        } else if ($window.hasClass('maximized')) {
+          restoreWindow($window);
+        // If the item is active and restored, then maximize it
+        } else {
+          maximizeWindow($window);
+        }
+      // Okay we don't see that window.. so go get it via ajax.
+      } else {
+        $.ajax({
+          dataType: "json",
+          url: $(this).attr('href'),
+          success: function(data) {
+            // Success!  Now create our new window object
+            var obj = $(data.html).appendTo('div.desktop');
+            // Make sure it's both draggable and resizable
+            $(obj).draggable(draggableWindowArguments);
+            $(obj).resizable(resizableWindowArguments);
+            // Set the window as maximized because we start them all that way.
+            maximizeWindow($(obj));
+            // Update our start bar
+            updateStartbarLinks();
+          },
+          fail: function(data) {
+            // We have failed.. Go to the hard location.
+            window.location = $(event.target).attr('href');
+          },
+        });
+      }
 
     }
   });
@@ -284,8 +289,8 @@ $(document).on('ready turbolinks:load', function() {
   });
 
   // If window bar header clicked bring it to focus
-  $(document).on('click', '.headbar', function() {
-    bringToFront($(this).parents('div.ui.window'));
+  $(document).on('click', '.window', function() {
+    bringToFront($(this));
   });
 
   // If window bar header double clicked, maximize/minimize
