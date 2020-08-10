@@ -11,9 +11,16 @@ class DesktopController < ApplicationController
 
     # Okay attempt to parse the page md file based on the params
     @document = MarkdownParser::Parser.parse "page/#{params[:page]}"
-    # If it's a document then cool, if not route back to /
+    # If it's a document then cool, if not check to see if it's a blog post to catch legacy calls to content
     if @document.nil? || @document[:published] == false
-      redirect_to "/"
+      # Okay attempt to parse the page md file based on the params
+      document = MarkdownParser::Parser.parse "post/#{params[:page]}"
+      # If it's a document then cool, if not route back to /
+      if document.nil? || document[:published] == false
+        redirect_to "/"
+      else
+        redirect_to "/blog/#{params[:page]}"
+      end
     else
 
       respond_to do |format|
