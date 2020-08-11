@@ -60,6 +60,19 @@ div.ui.window {
   }
 }
 
+.ui.segment.blog-grid {
+  display: grid;
+  grid-template-columns: minmax(15%, 200px) auto;
+  grid-gap: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  .blog-index {
+    .tabular.menu {
+      height: 100%;
+    }
+  }
+}
+
 .ui.basic.buttons.borderless {
   border: 0;
   border-radius: 0;
