@@ -53,7 +53,9 @@ class DesktopController < ApplicationController
               html: html
           }
         }
-        format.html {}
+        format.html {
+          @posts = MarkdownParser::Parser.posts
+        }
       end
     end
   end
