@@ -9,7 +9,6 @@ module MarkdownParser
       template = File.read Rails.root.join("app/views/documents/", file) rescue nil
       # if we have our template... get to it!
       unless template.nil?
-        # markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
         # some Vars for the content
         document = {}
         pageContent = ''
