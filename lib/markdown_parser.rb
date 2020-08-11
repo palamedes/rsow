@@ -85,7 +85,12 @@ module MarkdownParser
       files.each do |filename|
         filename.gsub!(/.*\//,"post/\\1")
         document = self.parse filename
-        posts << { title: document[:title], exerpt: document[:exerpt], icon: document[:icon], slug: document[:slug] }
+        posts << { title: document[:title],
+                   exerpt: document[:exerpt],
+                   icon: document[:icon],
+                   slug: document[:slug],
+                   date: document[:date]
+        }
       end
       return posts
     end
