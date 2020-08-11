@@ -1,6 +1,7 @@
 # Mark down parser that goes through and digs out the variables I need, scrubs the content as needed
 # and passes everything back as an object for rendering.
 module MarkdownParser
+  # The parser class does th work of parsing an MD file.
   class Parser
     def self.parse file
       # If there is no .md add it.
@@ -52,7 +53,48 @@ module MarkdownParser
         return document
       end
     end
+
+    # Get all site tags
+    def self.tags
+      tags = []
+      files = Dir.glob Rails.root.join('app','views','documents','post', '*')
+      files.each do |filename|
+        filename.gsub!(/.*\//,"post/\\1")
+        document = self.parse filename
+        tags << document[:tags] unless document[:tags] == ''
+      end
+      return tags.flatten.uniq
+    end
+
+    # Get all site categories
+    def self.categories
+      cats = []
+      files = Dir.glob Rails.root.join('app','views','documents','post', '*')
+      files.each do |filename|
+        filename.gsub!(/.*\//,"post/\\1")
+        document = self.parse filename
+        cats << document[:categories] unless document[:categories] == ''
+      end
+      return cats.flatten.uniq
+    end
+
+    # Get all posts and return them with just title, exerpt, icon, and link
+    def self.posts
+      posts = []
+      files = Dir.glob Rails.root.join('app','views','documents','post', '*')
+      files.each do |filename|
+        filename.gsub!(/.*\//,"post/\\1")
+        document = self.parse filename
+        posts << { title: document[:title], exerpt: document[:exerpt], icon: document[:icon], slug: document[:slug] }
+      end
+      return posts
+    end
+
+  end
+  # Class document is the object returned by the parser
+  # @TODO Create a Document Object to pass around.. too much formatting needs to happen as it is.
+  class Document
+
   end
 end
 
-# @TODO Create a Document Object to pass around.. too much formatting needs to happen as it is.
