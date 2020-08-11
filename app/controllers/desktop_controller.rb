@@ -37,19 +37,23 @@ class DesktopController < ApplicationController
   end
 
   # [GET] /blog/:post[.json]
-  # @TODO this will need to also work using a .json request
+  # @TODO this will need to also work using a .json request for each individual part.. menu, content, tags?
   def post
     # Okay attempt to parse the page md file based on the params
-    document = MarkdownParser::Parser.parse "post/#{params[:post]}"
+    @document = MarkdownParser::Parser.parse "post/#{params[:post]}"
     # If it's a document then cool, if not route back to /
-    if document.nil? || document[:published] == false
+    if @document.nil? || @document[:published] == false
       redirect_to "/"
     else
       respond_to do |format|
-        format.json { render json: {} }
-        format.html {
-          @document = document
+        format.json {
+          html = render_to_string action: :post, locals: { post: params[:post] }, layout: false, formats: [:html]
+          render json: {
+              document: @document,
+              html: html
+          }
         }
+        format.html {}
       end
     end
   end
