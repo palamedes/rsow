@@ -30,7 +30,7 @@
 
         <div class="ui vertical fluid tabular menu">
           <% @posts.each do |post| %>
-            <a href="<%= post[:slug].gsub('blog-','') %>" class="item <%= 'active' if post[:slug] == @document[:slug] %>">
+            <a href="<%= post[:slug].gsub('blog-','') %>" class="follow item <%= 'active' if post[:slug] == @document[:slug] %>">
               <i class="<%= post[:icon] %> icon"></i>
               <%= post[:title] %>
               <small><%= post[:date] %></small>
