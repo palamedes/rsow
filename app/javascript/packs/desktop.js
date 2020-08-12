@@ -352,6 +352,10 @@ $(document).on('ready turbolinks:load', function() {
     }
   }
 
+  // Init FB Comments again.
+  if (typeof FB != "undefined") {
+    FB.XFBML.parse()
+  }
 
 
 });
