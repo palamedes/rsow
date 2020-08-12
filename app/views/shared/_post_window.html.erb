@@ -25,8 +25,24 @@
         </div>
       </div>
     </div>
-    <div class="ui bottom attached segment">
-      <%= @document[:html].html_safe %>
+    <div class="ui bottom attached segment blog-grid">
+      <div class="blog-index">
+
+        <div class="ui vertical fluid tabular menu">
+          <% @posts.each do |post| %>
+            <a href="<%= post[:slug].gsub('blog-','') %>" class="item <%= 'active' if post[:slug] == @document[:slug] %>">
+              <i class="<%= post[:icon] %> icon"></i>
+              <%= post[:title] %>
+              <small><%= post[:date] %></small>
+            </a>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="blog-content">
+        <%= @document[:html].html_safe %>
+      </div>
+
     </div>
   </div>
 </div>
