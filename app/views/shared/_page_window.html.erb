@@ -1,15 +1,15 @@
 
 <div class="ui window segment maximized"
-     id="<%= @document[:slug] %>"
-     data-slug="<%= @document[:slug] %>"
-     data-icon="<%= @document[:icon] %>"
-     data-title="<%= @document[:title] %>"
+     id="<%= @document.slug %>"
+     data-slug="<%= @document.slug %>"
+     data-icon="<%= @document.icon %>"
+     data-title="<%= @document.title %>"
 >
   <div class="ui compact segment">
     <div class="ui tiny top attached menu headbar">
       <a class="active header item">
-        <i class="<%= @document[:icon] || 'file outline' %> icon"></i>
-        <%= @document[:title].html_safe %>
+        <i class="<%= @document.icon || 'file outline' %> icon"></i>
+        <%= @document.title.html_safe %>
       </a>
       <!-- a class="item">
         Come up with a way to add buttons! YAR!
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="ui bottom attached segment">
-      <%= @document[:html].html_safe %>
+      <%= @document.html.html_safe %>
     </div>
   </div>
 </div>
