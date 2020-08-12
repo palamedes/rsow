@@ -41,6 +41,7 @@
       </div>
       <div class="blog-content">
         <%= @document[:html].html_safe %>
+        <%= render 'shared/post_comments' if @document[:allow_comments] %>
       </div>
 
     </div>
