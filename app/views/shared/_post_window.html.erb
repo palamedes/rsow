@@ -1,19 +1,19 @@
 
 <div class="ui window segment maximized"
-     id="<%= @document[:slug] %>"
-     data-slug="<%= @document[:slug] %>"
-     data-icon="<%= @document[:icon] %>"
-     data-title="<%= @document[:title] %>"
+     id="<%= @document.slug %>"
+     data-slug="<%= @document.slug %>"
+     data-icon="<%= @document.icon %>"
+     data-title="<%= @document.title %>"
 >
   <div class="ui compact segment">
     <div class="ui tiny top attached menu headbar">
       <strong class="active header item">
         <i class="file alternate outline icon"></i>
-        <%= @document[:title].html_safe %>
+        <%= @document.title.html_safe %>
       </strong>
       <div class="item">
         <i class="calendar alternate outline icon"></i>
-        Published: <%= @document[:date].html_safe %>
+        Published: <%= @document.date.html_safe %>
       </div>
       <div class="right menu">
         <div class="ui small basic borderless icon buttons">
@@ -30,18 +30,18 @@
 
         <div class="ui vertical fluid tabular menu">
           <% @posts.each do |post| %>
-            <a href="<%= post[:slug].gsub('blog-','') %>" class="follow item <%= 'active' if post[:slug] == @document[:slug] %>">
-              <i class="<%= post[:icon] %> icon"></i>
-              <%= post[:title] %>
-              <small><%= post[:date] %></small>
+            <a href="<%= post.slug.gsub('blog-','') %>" class="follow item <%= 'active' if post.slug == @document.slug %>">
+              <i class="<%= post.icon %> icon"></i>
+              <%= post.title %>
+              <small><%= post.date %></small>
             </a>
           <% end %>
         </div>
 
       </div>
       <div class="blog-content">
-        <%= @document[:html].html_safe %>
-        <%= render 'shared/post_comments' if @document[:allow_comments] %>
+        <%= @document.html.html_safe %>
+        <%= render 'shared/post_comments' if @document.allow_comments %>
       </div>
 
     </div>

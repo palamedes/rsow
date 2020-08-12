@@ -50,7 +50,7 @@ module MarkdownParser
         # Inject the HTML into the document
         document[:html] = Kramdown::Document.new(pageContent).to_html
         # Spit out our results
-        return document
+        return objectify(document)
       end
     end
 
@@ -61,7 +61,8 @@ module MarkdownParser
       files.each do |filename|
         filename.gsub!(/.*\//,"post/\\1")
         document = self.parse filename
-        tags << document[:tags] unless document[:tags] == ''
+        tags << document.tags unless document.tags == ''
+        # @TODO Need to handle an array correctly here
       end
       return tags.flatten.uniq
     end
@@ -73,7 +74,8 @@ module MarkdownParser
       files.each do |filename|
         filename.gsub!(/.*\//,"post/\\1")
         document = self.parse filename
-        cats << document[:categories] unless document[:categories] == ''
+        cats << document.categories unless document.categories == ''
+        # @TODO Need to handle an array correctly here
       end
       return cats.flatten.uniq
     end
@@ -85,21 +87,45 @@ module MarkdownParser
       files.each do |filename|
         filename.gsub!(/.*\//,"post/\\1")
         document = self.parse filename
-        posts << { title: document[:title],
-                   exerpt: document[:exerpt],
-                   icon: document[:icon],
-                   slug: document[:slug],
-                   date: document[:date]
-        }
+        posts << document
       end
       return posts
     end
 
+    # Objectify the array with defaults if needed
+    def self.objectify document
+      return nil if document.nil?
+      doc = MarkdownParser::Document.new
+      doc.published       = document[:published]      rescue false
+      doc.sitemap         = document[:sitemap]        rescue false
+      doc.title           = document[:title]          rescue ''
+      doc.excerpt         = document[:excerpt]        rescue ''
+      doc.layout          = document[:layout]         rescue 'post'
+      doc.tags            = document[:tags]           rescue ''
+      doc.categories      = document[:categories]     rescue ''
+      doc.image           = document[:image]          rescue ''
+      doc.gallery         = document[:gallery]        rescue ''
+      doc.ribbon          = document[:ribbon]         rescue ''
+      doc.document_class  = document[:document_class] rescue ''
+      doc.private         = document[:private]        rescue true
+      doc.allow_comments  = document[:allow_comments] rescue false
+      doc.duration        = document[:duration]       rescue ''
+      doc.costs           = document[:costs]          rescue ''
+      doc.slug            = document[:slug]           rescue ''
+      doc.date            = document[:date]           rescue ''
+      doc.icon            = document[:icon]           rescue ''
+      doc.html            = document[:html]           rescue ''
+      return doc
+    end
+    
+    
   end
-  # Class document is the object returned by the parser
-  # @TODO Create a Document Object to pass around.. too much formatting needs to happen as it is.
-  class Document
 
+  # Class document is the object returned by the parser
+  class Document
+    attr_accessor :published, :sitemap, :title, :excerpt, :layout, :tags, :categories, :image,
+                  :gallery, :ribbon, :document_class, :private, :allow_comments, :duration,
+                  :costs, :slug, :date, :icon, :html
   end
 end
 
