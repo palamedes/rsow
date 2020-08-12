@@ -64,12 +64,24 @@ div.ui.window {
   display: grid;
   grid-template-columns: minmax(15%, 200px) auto;
   grid-gap: 5px;
-  padding: 5px;
+  padding: 0px;
   box-sizing: border-box;
   .blog-index {
+    background: #fafafa;
     .tabular.menu {
       height: 100%;
+      a.item {
+        font-size: 1.2em;
+        font-weight: bold;
+        small {
+          display: block;
+          font-size: 0.8em;
+        }
+      }
     }
+  }
+  .blog-content {
+    padding: 10px;
   }
 }
 
