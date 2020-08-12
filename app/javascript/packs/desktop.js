@@ -70,8 +70,8 @@ $(document).on('ready turbolinks:load', function() {
 
   // This is how we bring windows to the fore
   var bringToFront = function(dis) {
-    $('div.window').css('zIndex', 400);
-    $(dis).css('zIndex', 500);
+    $('div.window').css('zIndex', 1);
+    $(dis).css('zIndex', 10);
   }
 
   // Here is how we restore a window
