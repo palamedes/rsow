@@ -234,9 +234,12 @@ $(document).on('ready turbolinks:load', function() {
         }
       // Okay we don't see that window.. so go get it via ajax.
       } else {
+        // If we don't have an href, then lets quietly go away
+        var url = $(this).attr('href');
+        if (typeof url == 'undefined') return;
         $.ajax({
           dataType: "json",
-          url: $(this).attr('href'),
+          url: url,
           success: function(data) {
             // Success!  Now create our new window object
             var obj = $(data.html).appendTo('div.desktop');
