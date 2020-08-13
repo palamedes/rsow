@@ -178,6 +178,8 @@ $(document).on('ready turbolinks:load', function() {
 
   // @TODO Save UI state in cookies so you can come back to it later on a fresh page load.
 
+  // @TODO If someone starts to resize a maximized window, then change it to a restored window state
+  
 
   // Quick hacked to gether date time function for bottom right of start bar.
   var updateDateTime = function() {

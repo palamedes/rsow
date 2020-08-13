@@ -21,7 +21,7 @@ icon: file alternate outline
 ---
 
 
-![Chasing Money](/images/2018/rich-chase.png){: .float .right .scaled}
+![Chasing Money](/images/2018/rich-chase.jpg){: .float .right .scaled}
 
 I got into a debate today with some people about what they liked to term "Wage Slavery".
 
