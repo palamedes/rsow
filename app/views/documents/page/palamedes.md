@@ -8,6 +8,9 @@ categories:
 private: false
 slug: palamedes
 icon: file outline
+audio: /images/1972/palamedes.mp3
+audioautoplay: false
+audioloop: false
 ---
 
 
