@@ -18,6 +18,9 @@ costs:
 updates: 
 slug: template
 icon: 
+audio: 
+audioautoplay: false
+audioloop: false
 ---
 
 published: true|false
@@ -80,9 +83,15 @@ slug: {unique name}
 icon: {small icon name}
  ^ This is the semantic icon string used to create the icon in the task bar and in the window - defaults to "file outline"
 
+audio: {link to audio file}
+ ^ This is used by those pages that have an imbeded audio file of the page.. music.. a reading.. whatever.
 
-
-
+audioautoplay: true|false
+ ^ Do we auto play this file or no?  
+ 
+audioloop: true|false
+ ^ Should we loop this audio?
+ 
 
 LEGACY NO LONGER USED:
 
