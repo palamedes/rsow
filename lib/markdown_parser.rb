@@ -114,6 +114,9 @@ module MarkdownParser
       doc.slug            = document[:slug]           rescue ''
       doc.date            = document[:date]           rescue ''
       doc.icon            = document[:icon]           rescue ''
+      doc.audio           = document[:audio]          rescue ''
+      doc.audioautoplay   = document[:audioautoplay]  rescue false
+      doc.audioloop       = document[:audioloop]      rescue false
       doc.html            = document[:html]           rescue ''
       return doc
     end
@@ -125,7 +128,13 @@ module MarkdownParser
   class Document
     attr_accessor :published, :sitemap, :title, :excerpt, :layout, :tags, :categories, :image,
                   :gallery, :ribbon, :document_class, :private, :allow_comments, :duration,
-                  :costs, :slug, :date, :icon, :html
+                  :costs, :slug, :date, :icon, :audio, :audioautoplay, :audioloop,
+                  :html
+
+    def has_audio?
+      !audio.nil?
+    end
+
   end
 end
 
