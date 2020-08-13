@@ -211,7 +211,7 @@ $(document).on('ready turbolinks:load', function() {
   /* Clickable Events */
 
   // a.item clicks -- pull it in via json if we can, or if active and hiddenthen just unhide, or minimized/maximize..etc..
-  $(document).on('click', 'a', function() {
+  $(document).on('click', 'a:not(.lightbox)', function() {
     // if this item has the follow class, then fire the anchor off just like normal.
     // Otherwise we are going to try to json first, then if that fails.. add the class and fire the event.
     if (!$(this).hasClass('follow')) {
