@@ -21,6 +21,7 @@ icon:
 audio: 
 audioautoplay: false
 audioloop: false
+audiovolume: 1
 ---
 
 published: true|false
@@ -91,6 +92,13 @@ audioautoplay: true|false
  
 audioloop: true|false
  ^ Should we loop this audio?
+ 
+audiovolume: {0.0 to 1.0}
+ ^ a percentage of the volume that this should be set to
+ 
+ 
+ 
+ 
  
 
 LEGACY NO LONGER USED:
