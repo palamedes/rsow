@@ -207,6 +207,11 @@ $(document).on('ready turbolinks:load', function() {
   updateDateTime();
   // Set those start bar links as active or create the entry if there isn't one.
   updateStartbarLinks();
+  // Init FB Comments again.
+  if (typeof FB != "undefined") { FB.XFBML.parse(); }
+
+
+
 
   /* Clickable Events */
 
@@ -293,6 +298,39 @@ $(document).on('ready turbolinks:load', function() {
     history.pushState({}, "", "/");
   });
 
+  // AUDIO PLAY BUTTON at top right of window
+  $(document).on('click', 'button.window.audio.play', function() {
+    // Check to see if the audio element is already created
+    var $window = $(this).parents('div.ui.window');
+    var slug = $window.data('slug');
+    var $audioElement = $('audio[data-slug='+slug+']');
+    // If no element, create it
+    if (!$audioElement.length) {
+      var $audioElement = $('<audio class="hidden" src="'+$(this).data('audio')+'" data-slug="'+slug+'"></audio>').appendTo('div.desktop');
+    }
+    // Play the audio
+    $audioElement.trigger('play');
+    // Hide the play button and show the pause button
+    $(this).addClass('hidden');
+    $(this).siblings('.pause').removeClass('hidden');
+    
+    // @TODO handle auto play
+  });
+
+  // AUDIO PAUSE BUTTON
+  $(document).on('click', 'button.window.audio.pause', function() {
+    // Find our audio element
+    var slug = $(this).parents('div.ui.window').data('slug');
+    var $audio = $('audio[data-slug='+slug+']');
+    // If we found it, pause it
+    if ($audio.length) {
+      $audio.trigger('pause');
+      // swap the icons back
+      $(this).addClass('hidden');
+      $(this).siblings('.play').removeClass('hidden');
+    }
+  });
+
   // If window bar header clicked bring it to focus
   $(document).on('click', '.window', function() {
     bringToFront($(this));
@@ -355,11 +393,6 @@ $(document).on('ready turbolinks:load', function() {
       google.charts.load('current', {packages: ['corechart', 'line']});
       google.charts.setOnLoadCallback(drawChart);
     }
-  }
-
-  // Init FB Comments again.
-  if (typeof FB != "undefined") {
-    FB.XFBML.parse()
   }
 
 

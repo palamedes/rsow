@@ -90,9 +90,6 @@ audio: {link to audio file}
 audioautoplay: true|false
  ^ Do we auto play this file or no?  
  
-audioloop: true|false
- ^ Should we loop this audio?
- 
 audiovolume: {0.0 to 1.0}
  ^ a percentage of the volume that this should be set to
  
