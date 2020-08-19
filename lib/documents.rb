@@ -23,4 +23,5 @@ class Documents
     eval("return @docs.sort_by(&:#{by.to_s}).reverse if dir == :DESC")
     nil
   end
+
 end
