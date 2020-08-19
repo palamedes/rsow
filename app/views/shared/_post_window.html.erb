@@ -21,11 +21,11 @@
       <div class="blog-index">
 
         <div class="ui vertical fluid tabular menu">
-          <% @posts.each do |post| %>
-            <a href="<%= post.slug.gsub('blog-','') %>" class="follow item <%= 'active' if post.slug == @document.slug %>">
+          <% @posts.order_by(:date).each do |post| %>
+            <a href="/<%= post.href %>" class="follow item <%= 'active' if post.slug == @document.slug %>">
               <i class="<%= post.icon %> icon"></i>
               <%= post.title %>
-              <small><%= post.date %></small>
+              <small><%= post.date.strftime("%B %d, %Y") %></small>
             </a>
           <% end %>
         </div>
