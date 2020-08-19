@@ -7,10 +7,12 @@
     <i class="address book icon"></i>
     About
   </a>
-  <a class="item static">
-    <i class="file alternate outline icon"></i>
-    Blog
-  </a>
+  <% unless @blog_post_link == false %>
+    <a href="<%= @blog_post_link %>" class="item static follow">
+      <i class="file alternate outline icon"></i>
+      Blog
+    </a>
+  <% end %>
   <a href="/build-log" class="item static">
     <i class="file video outline icon"></i>
     RV-10 VLog
