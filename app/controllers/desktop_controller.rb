@@ -3,7 +3,7 @@ class DesktopController < ApplicationController
   # [GET] /
   # Load the desktop
   def index
-    @blog_post_link = MarkdownParser::Parser.posts.order_by(:date).first.href
+    @blog_post_link = MarkdownParser::Parser.posts.order_by(:date).first.href rescue false
   end
 
   # [GET] /:page[.json]
