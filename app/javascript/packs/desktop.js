@@ -1,4 +1,3 @@
-
 $(document).on('ready turbolinks:load', function() {
 
   /** SLUG FUNCTIONS
@@ -214,9 +213,8 @@ $(document).on('ready turbolinks:load', function() {
 
 
   /* Clickable Events */
-
   // a.item clicks -- pull it in via json if we can, or if active and hiddenthen just unhide, or minimized/maximize..etc..
-  $(document).on('click', 'a:not(.lightbox)', function() {
+  $(document).off('click', 'a:not(.lightbox)').on('click', 'a:not(.lightbox)', function() {
     // if this item has the follow class, then fire the anchor off just like normal.
     // Otherwise we are going to try to json first, then if that fails.. add the class and fire the event.
     if (!$(this).hasClass('follow')) {
@@ -269,26 +267,26 @@ $(document).on('ready turbolinks:load', function() {
   });
 
   // RESTORE BUTTON at top right of window
-  $(document).on('click', 'button.restore.window', function() {
+  $(document).off('click', 'button.restore.window').on('click', 'button.restore.window', function() {
     var $window = $(this).parents('div.ui.window');
     restoreWindow($window);
   });
 
   // RESTORE BUTTON at top right of window
-  $(document).on('click', 'button.maximize.window', function () {
+  $(document).off('click', 'button.maximize.window').on('click', 'button.maximize.window', function () {
     var $window = $(this).parents('div.ui.window');
     setWindowLocationData($window);
     maximizeWindow($window);
   });
 
   // MINIMIZE BUTTON at top right of window
-  $(document).on('click', 'button.minimize.window', function() {
+  $(document).off('click', 'button.minimize.window').on('click', 'button.minimize.window', function() {
     var $window = $(this).parents('div.ui.window');
     $window.addClass('hidden');
   });
 
   // CLOSE BUTTON at top right of window
-  $(document).on('click', 'button.close.window', function() {
+  $(document).off('click', 'button.close.window').on('click', 'button.close.window', function() {
     var $window = $(this).parents('div.ui.window');
     // Destroy window from dom
     $window.remove();
@@ -299,7 +297,7 @@ $(document).on('ready turbolinks:load', function() {
   });
 
   // AUDIO PLAY BUTTON at top right of window
-  $(document).on('click', 'button.window.audio.play', function() {
+  $(document).off('click', 'button.window.audio.play').on('click', 'button.window.audio.play', function() {
     // Check to see if the audio element is already created
     var $window = $(this).parents('div.ui.window');
     var slug = $window.data('slug');
@@ -318,7 +316,7 @@ $(document).on('ready turbolinks:load', function() {
   });
 
   // AUDIO PAUSE BUTTON
-  $(document).on('click', 'button.window.audio.pause', function() {
+  $(document).off('click', 'button.window.audio.pause').on('click', 'button.window.audio.pause', function() {
     // Find our audio element
     var slug = $(this).parents('div.ui.window').data('slug');
     var $audio = $('audio[data-slug='+slug+']');
@@ -332,12 +330,12 @@ $(document).on('ready turbolinks:load', function() {
   });
 
   // If window bar header clicked bring it to focus
-  $(document).on('click', '.window', function() {
+  $(document).off('click', '.window').on('click', '.window', function() {
     bringToFront($(this));
   });
 
   // If window bar header double clicked, maximize/minimize
-  $(document).on('dblclick', '.headbar', function() {
+  $(document).off('dblclick', '.headbar').on('dblclick', '.headbar', function() {
     $window = $(this).parents('div.ui.window');
     if ($window.hasClass('maximized')) {
       restoreWindow($window);
@@ -394,6 +392,5 @@ $(document).on('ready turbolinks:load', function() {
       google.charts.setOnLoadCallback(drawChart);
     }
   }
-
 
 });
