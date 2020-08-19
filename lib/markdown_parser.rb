@@ -82,7 +82,7 @@ module MarkdownParser
 
     # Get all posts and return them with just title, exerpt, icon, and link
     def self.posts
-      posts = []
+      posts = Documents.new
       files = Dir.glob Rails.root.join('app','views','documents','post', '*')
       files.each do |filename|
         filename.gsub!(/.*\//,"post/\\1")
@@ -95,7 +95,7 @@ module MarkdownParser
     # Objectify the array with defaults if needed
     def self.objectify document
       return nil if document.nil?
-      doc = MarkdownParser::Document.new
+      doc = Document.new
       doc.published       = document[:published]      rescue false
       doc.sitemap         = document[:sitemap]        rescue false
       doc.title           = document[:title]          rescue ''
@@ -122,20 +122,7 @@ module MarkdownParser
       return doc
     end
     
-    
   end
 
-  # Class document is the object returned by the parser
-  class Document
-    attr_accessor :published, :sitemap, :title, :excerpt, :layout, :tags, :categories, :image,
-                  :gallery, :ribbon, :document_class, :private, :allow_comments, :duration,
-                  :costs, :slug, :date, :icon, :audio, :audioautoplay, :audioloop, :audiovolume,
-                  :html
-
-    def has_audio?
-      !audio.nil?
-    end
-
-  end
 end
 
