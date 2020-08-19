@@ -10,9 +10,10 @@ class Document
     !audio.nil?
   end
 
-
-  def order_by key
-
+  # get the href for this document
+  # @TOOD make it a FULL href?
+  def href
+    slug.gsub 'blog-', 'blog/'
   end
 
 end
