@@ -178,7 +178,9 @@ $(document).on('ready turbolinks:load', function() {
   // @TODO Save UI state in cookies so you can come back to it later on a fresh page load.
 
   // @TODO If someone starts to resize a maximized window, then change it to a restored window state
-  
+
+  // @TODO Get ALL MD file variables to actually do something
+
 
   // Quick hacked to gether date time function for bottom right of start bar.
   var updateDateTime = function() {
@@ -196,7 +198,9 @@ $(document).on('ready turbolinks:load', function() {
     setTimeout(updateDateTime, 60000);
   }
 
-  /* Stuff to run once we are ready to */
+  /*
+   * Stuff to run once we are ready to..  This is the starting point of the page post load.
+   */
   
   // Figure out how big our desktop actually is.. it's not the css size.
   adjustDesktop();
@@ -206,13 +210,14 @@ $(document).on('ready turbolinks:load', function() {
   updateDateTime();
   // Set those start bar links as active or create the entry if there isn't one.
   updateStartbarLinks();
-  // Init FB Comments again.
+  // Init FB Comments again... I hate that I have to do this.
   if (typeof FB != "undefined") { FB.XFBML.parse(); }
 
 
+  /*
+   * Clickable Events that must be live events .off'd then .on'd to avoid turbolink snafu's
+   */
 
-
-  /* Clickable Events */
   // a.item clicks -- pull it in via json if we can, or if active and hiddenthen just unhide, or minimized/maximize..etc..
   $(document).off('click', 'a:not(.lightbox)').on('click', 'a:not(.lightbox)', function() {
     // if this item has the follow class, then fire the anchor off just like normal.
@@ -329,12 +334,12 @@ $(document).on('ready turbolinks:load', function() {
     }
   });
 
-  // If window bar header clicked bring it to focus
+  // WINDOW CLICK bring it to focus
   $(document).off('click', '.window').on('click', '.window', function() {
     bringToFront($(this));
   });
 
-  // If window bar header double clicked, maximize/minimize
+  // WINDOW HEADER DOUBLE CLICK, maximize/minimize
   $(document).off('dblclick', '.headbar').on('dblclick', '.headbar', function() {
     $window = $(this).parents('div.ui.window');
     if ($window.hasClass('maximized')) {
@@ -345,7 +350,7 @@ $(document).on('ready turbolinks:load', function() {
   });
 
 
-  /* STOCK Charting stuff.. */
+  /* STOCK Charting stuff.. */ //@TODO MOVE THIS TO IT"S OWN LOCATION... 
 
   // Only try to draw the chart if there is a chart...
   slugFunctions['stocks'] = function() {
