@@ -12,6 +12,7 @@ module MarkdownParser
       unless template.nil?
         # some Vars for the content
         document = {}
+        document[:has_variables] = false
         pageContent = ''
         # What we use to know if we are working with the vars
         parsingVariables = false
@@ -32,6 +33,7 @@ module MarkdownParser
           end
           # If we are parsing variables then do that.
           if parsingVariables == true
+            document[:has_variables] = true
             # Split our line into key : value
             parsedVariable = line.split ':', 2
             # Define our key and convert it to a symbol
@@ -96,29 +98,30 @@ module MarkdownParser
     def self.objectify document
       return nil if document.nil?
       doc = Document.new
-      doc.published       = document[:published]      rescue false
-      doc.sitemap         = document[:sitemap]        rescue false
-      doc.title           = document[:title]          rescue ''
-      doc.excerpt         = document[:excerpt]        rescue ''
-      doc.layout          = document[:layout]         rescue 'post'
-      doc.tags            = document[:tags]           rescue ''
-      doc.categories      = document[:categories]     rescue ''
-      doc.image           = document[:image]          rescue ''
-      doc.gallery         = document[:gallery]        rescue ''
-      doc.ribbon          = document[:ribbon]         rescue ''
-      doc.document_class  = document[:document_class] rescue ''
-      doc.private         = document[:private]        rescue true
-      doc.allow_comments  = document[:allow_comments] rescue false
-      doc.duration        = document[:duration]       rescue ''
-      doc.costs           = document[:costs]          rescue ''
-      doc.slug            = document[:slug]           rescue ''
-      doc.date            = document[:date]           rescue ''
-      doc.icon            = document[:icon]           rescue ''
-      doc.audio           = document[:audio]          rescue ''
-      doc.audioautoplay   = document[:audioautoplay]  rescue false
-      doc.audioloop       = document[:audioloop]      rescue false
-      doc.audiovolume     = document[:audiovolume]    rescue 1
-      doc.html            = document[:html]           rescue ''
+      doc.has_variables   = document[:has_variables]  || false
+      doc.published       = document[:published]      || false
+      doc.sitemap         = document[:sitemap]        || false
+      doc.title           = document[:title]          || ''
+      doc.excerpt         = document[:excerpt]        || ''
+      doc.layout          = document[:layout]         || 'post'
+      doc.tags            = document[:tags]           || ''
+      doc.categories      = document[:categories]     || ''
+      doc.image           = document[:image]          || ''
+      doc.gallery         = document[:gallery]        || ''
+      doc.ribbon          = document[:ribbon]         || ''
+      doc.document_class  = document[:document_class] || ''
+      doc.private         = document[:private]        || true
+      doc.allow_comments  = document[:allow_comments] || false
+      doc.duration        = document[:duration]       || ''
+      doc.costs           = document[:costs]          || ''
+      doc.slug            = document[:slug]           || ''
+      doc.date            = document[:date]           || ''
+      doc.icon            = document[:icon]           || ''
+      doc.audio           = document[:audio]          || ''
+      doc.audioautoplay   = document[:audioautoplay]  || false
+      doc.audioloop       = document[:audioloop]      || false
+      doc.audiovolume     = document[:audiovolume]    || 1
+      doc.html            = document[:html]           || ''
       return doc
     end
     
