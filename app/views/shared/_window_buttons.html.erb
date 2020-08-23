@@ -1,7 +1,7 @@
 <div class="right menu">
   <div class="ui small basic borderless icon buttons">
     <button class="ui button"><i class="question icon"></i></button>
-    <% if @document.has_audio? %>
+    <% if !@document.nil? && @document.has_audio? %>
       <button class="ui button window audio play" data-audio="<%= @document.audio %>" data-autoplay="<%= @document.audioautoplay %>"><i class="play circle icon"></i></button>
       <button class="ui button window audio pause hidden"><i class="pause circle icon"></i></button>
     <% end %>
