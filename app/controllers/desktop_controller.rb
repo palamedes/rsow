@@ -67,6 +67,8 @@ class DesktopController < ApplicationController
     end
   end
 
+  protected
+
   # Get the first blog post link and set it.
   def getBlogPostLink
     @blog_post_link = MarkdownParser::Parser.posts.order_by(:date).first.href rescue false
