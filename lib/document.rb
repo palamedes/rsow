@@ -7,7 +7,7 @@ class Document
 
   # Does this document have any audio?
   def has_audio?
-    !audio.nil?
+    !audio.empty?
   end
 
   # get the href for this document
