@@ -177,6 +177,8 @@ $(document).on('ready turbolinks:load', function() {
 
   // @TODO Get ALL MD file variables to actually do something
 
+  // @TODO window switching to full screen windows makes sure it's the latest in the url.
+
   // Quick hacked to gether date time function for bottom right of start bar.
   var updateDateTime = function() {
     var dT = new Date();
