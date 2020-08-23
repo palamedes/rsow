@@ -171,16 +171,11 @@ $(document).on('ready turbolinks:load', function() {
 
   // @TODO Be able to set minimum window width/height dynamically in the .md
   
-  // @TODO if the window changes size, update the desktop size and redraw state of all windows so they fit accordingly.
-
   // @TODO handle small views so we are no longer a window system if we get too small (mobile etc..)
 
   // @TODO Save UI state in cookies so you can come back to it later on a fresh page load.
 
-  // @TODO If someone starts to resize a maximized window, then change it to a restored window state
-
   // @TODO Get ALL MD file variables to actually do something
-
 
   // Quick hacked to gether date time function for bottom right of start bar.
   var updateDateTime = function() {
@@ -221,8 +216,7 @@ $(document).on('ready turbolinks:load', function() {
   // Catch window resize
   $(window).resize(function(){
     updateDesktop();
-  })
-
+  });
 
   /*
    * Clickable Events that must be live events .off'd then .on'd to avoid turbolink snafu's
