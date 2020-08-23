@@ -21,7 +21,7 @@
       <div class="blog-index">
 
         <div class="ui vertical fluid tabular menu">
-          <% @posts.order_by(:date).each do |post| %>
+          <% @posts.each do |post| %>
             <a href="/<%= post.href %>" class="follow item <%= 'active' if post.slug == @document.slug %>">
               <i class="<%= post.icon %> icon"></i>
               <%= post.title %>
