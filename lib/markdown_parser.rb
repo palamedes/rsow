@@ -20,19 +20,24 @@ module MarkdownParser
         template.lines.each_with_index do |line, index|
           # If we are at index zero and we have --- then we know we are starting our variables
           if index == 0 && line.chomp == "---"
+            # We are parsing variables
             parsingVariables = true
-            next;
-            # If we don't have --- at index zero then there are no variables and just output the whole thing
+            # We dont need to do more work this cycle
+            next
+          # If we don't have --- at index zero then there are no variables and just output the whole thing
           elsif index == 0 && line.chomp != "---"
-            break; # There are no variables
-            # If we just got a --- not at 0 and we started variables, then end variables
-          elsif index != 0 && line.chomp == "---" && parsingVariables == true
+            # Okay there must not be any variables
             parsingVariables = false
-            next;
+          # If we just got a --- not at 0 and we started variables, then end variables
+          elsif index != 0 && line.chomp == "---" && parsingVariables == true
+            # We have stopped parsing variables
+            parsingVariables = false
+            # We dont need to do more work this cycle
+            next
             #End of variables.. the rest can go here.
           end
           # If we are parsing variables then do that.
-          if parsingVariables == true
+          if parsingVariables
             document[:has_variables] = true
             # Split our line into key : value
             parsedVariable = line.split ':', 2
