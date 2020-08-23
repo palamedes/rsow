@@ -9,16 +9,14 @@ class DesktopController < ApplicationController
   # [GET] /:page[.json]
   # @TODO This will need to either work as a full page load, or a json pull of just the document
   def page
-    getBlogPostLink
-
     # Okay attempt to parse the page md file based on the params
     @document = MarkdownParser::Parser.parse "page/#{params[:page]}"
     # If it's a document then cool, if not check to see if it's a blog post to catch legacy calls to content
-    if @document.nil? || @document.published == false
-      # Okay attempt to parse the page md file based on the params
+    if @document.nil? || (@document.has_variables && !@document.published)
+      # Hrmm.. is this a legacy post link?
       document = MarkdownParser::Parser.parse "post/#{params[:page]}"
-      # If it's a document then cool, if not route back to /
-      if document.nil? || document.published == false
+      # If this is a legacy post link redirect to /blog if not, then just go to / because we cant find this
+      if document.nil?
         redirect_to "/"
       else
         redirect_to "/blog/#{params[:page]}"
@@ -33,16 +31,18 @@ class DesktopController < ApplicationController
               html: html
           }
         }
-        format.html {}
+        format.html {
+          # Get first blog post link
+          getBlogPostLink
+        }
       end
+
     end
   end
 
   # [GET] /blog/:post[.json]
   # @TODO this will need to also work using a .json request for each individual part.. menu, content, tags?
   def post
-    getBlogPostLink
-
     # Okay attempt to parse the page md file based on the params
     @document = MarkdownParser::Parser.parse "post/#{params[:post]}"
     # If it's a document then cool, if not route back to /
@@ -58,7 +58,10 @@ class DesktopController < ApplicationController
           }
         }
         format.html {
-          @posts = MarkdownParser::Parser.posts
+          # And get all posts
+          @posts = MarkdownParser::Parser.posts.order_by(:date)
+          # Get that blog post link for the footer.
+          @blog_post_link = @posts.first.href
         }
       end
     end
