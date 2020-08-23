@@ -3,12 +3,13 @@ class DesktopController < ApplicationController
   # [GET] /
   # Load the desktop
   def index
-    @blog_post_link = MarkdownParser::Parser.posts.order_by(:date).first.href rescue false
+    getBlogPostLink
   end
 
   # [GET] /:page[.json]
   # @TODO This will need to either work as a full page load, or a json pull of just the document
   def page
+    getBlogPostLink
 
     # Okay attempt to parse the page md file based on the params
     @document = MarkdownParser::Parser.parse "page/#{params[:page]}"
@@ -40,6 +41,8 @@ class DesktopController < ApplicationController
   # [GET] /blog/:post[.json]
   # @TODO this will need to also work using a .json request for each individual part.. menu, content, tags?
   def post
+    getBlogPostLink
+
     # Okay attempt to parse the page md file based on the params
     @document = MarkdownParser::Parser.parse "post/#{params[:post]}"
     # If it's a document then cool, if not route back to /
@@ -59,6 +62,11 @@ class DesktopController < ApplicationController
         }
       end
     end
+  end
+
+  # Get the first blog post link and set it.
+  def getBlogPostLink
+    @blog_post_link = MarkdownParser::Parser.posts.order_by(:date).first.href rescue false
   end
 
 end

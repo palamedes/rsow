@@ -201,17 +201,27 @@ $(document).on('ready turbolinks:load', function() {
   /*
    * Stuff to run once we are ready to..  This is the starting point of the page post load.
    */
-  
-  // Figure out how big our desktop actually is.. it's not the css size.
-  adjustDesktop();
-  // Really maximize any maximized windows
-  maximizeWindow($('div.window.maximized'));
+
+  // Function that contains stuff we need to do in other events
+  var updateDesktop = function() {
+    // Figure out how big our desktop actually is.. it's not the css size.
+    adjustDesktop();
+    // Really maximize any maximized windows
+    maximizeWindow($('div.window.maximized'));
+  }
+  // Fire it off once
+  updateDesktop();
   // Start the clock
   updateDateTime();
   // Set those start bar links as active or create the entry if there isn't one.
   updateStartbarLinks();
   // Init FB Comments again... I hate that I have to do this.
   if (typeof FB != "undefined") { FB.XFBML.parse(); }
+
+  // Catch window resize
+  $(window).resize(function(){
+    updateDesktop();
+  })
 
 
   /*
@@ -350,7 +360,7 @@ $(document).on('ready turbolinks:load', function() {
   });
 
 
-  /* STOCK Charting stuff.. */ //@TODO MOVE THIS TO IT"S OWN LOCATION... 
+  /* STOCK Charting stuff.. */ //@TODO MOVE THIS TO IT"S OWN LOCATION...
 
   // Only try to draw the chart if there is a chart...
   slugFunctions['stocks'] = function() {
