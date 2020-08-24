@@ -23,6 +23,7 @@
         <div class="ui vertical fluid tabular menu">
           <% @posts.each do |post| %>
             <a href="/<%= post.href %>" class="follow item <%= 'active' if post.slug == @document.slug %>">
+              <img src="<%= post.image %>" class="icon">
               <i class="<%= post.icon %> icon"></i>
               <%= post.title %>
               <small><%= post.date.strftime("%B %d, %Y") %></small>
