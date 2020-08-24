@@ -13,6 +13,7 @@ module MarkdownParser
         # some Vars for the content
         document = {}
         document[:has_variables] = false
+        document[:file_name] = file
         pageContent = ''
         # What we use to know if we are working with the vars
         parsingVariables = false
@@ -103,6 +104,7 @@ module MarkdownParser
     def self.objectify document
       return nil if document.nil?
       doc = Document.new
+      doc.file_name       = document[:file_name]
       doc.has_variables   = document[:has_variables]  || false
       doc.published       = document[:published]      || false
       doc.sitemap         = document[:sitemap]        || false
