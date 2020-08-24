@@ -21,9 +21,6 @@ updates:
 slug: blog-livable-wages-unreasonable-expectations
 date: Aug 18, 2015
 icon: file alternate outline
-
-
-
 ---
 
 ![Greed / Bag of money](/images/2015/greed.jpg){: .float .right}
