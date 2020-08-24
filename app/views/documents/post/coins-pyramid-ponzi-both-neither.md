@@ -11,9 +11,6 @@ categories:
 image: /images/2014/Litecoin.jpg
 gallery:
 ribbon:
-tile_size: 2x1
-tile_color:
-tile_class:
 private: false
 allow_comments: true
 slug: blog-coins-pyramid-ponzi-both-neither
