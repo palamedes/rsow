@@ -20,12 +20,14 @@
     <div class="ui bottom attached segment blog-grid">
       <div class="blog-index">
 
-        <div class="ui vertical fluid tabular menu">
+        <div class="ui vertical fluid tabular blog menu">
           <% @posts.each do |post| %>
+
             <a href="/<%= post.href %>" class="follow item <%= 'active' if post.slug == @document.slug %>">
               <img src="<%= post.image %>" class="icon">
-              <i class="<%= post.icon %> icon"></i>
-              <%= post.title %>
+            </a>
+            <a href="/<%= post.href %>" class="follow item <%= 'active' if post.slug == @document.slug %>">
+              <span><%= post.title %></span>
               <small><%= post.date.strftime("%B %d, %Y") %></small>
             </a>
           <% end %>
@@ -33,6 +35,8 @@
 
       </div>
       <div class="blog-content">
+        <h1><%= @document.title.html_safe %></h1>
+        <em><%= @document.date.html_safe %></em>
         <%= @document.html.html_safe %>
         <%= render 'shared/post_comments' if @document.allow_comments %>
       </div>
