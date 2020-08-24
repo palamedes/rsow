@@ -2,7 +2,7 @@
 published: true
 sitemap: true
 type: post
-title: "Livable Wages and Unreasonable Client Expectations"
+title: Livable Wages and Unreasonable Client Expectations
 excerpt:  "I work in an industry that demands highly skilled laborers but are constantly bombarded by accusations of greed or people that scoff as the costs.  Plumbers make more!" 
 layout: post
 tags:
