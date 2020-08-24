@@ -6,7 +6,7 @@ excerpt:  There's this radical notion that people who earned money by taking the
 layout: post
 tags:
 categories: Rants!
-image: /images/2018/rich-chase.png
+image: /images/2018/rich-chase.jpg
 gallery:
 ribbon:
 document_class:

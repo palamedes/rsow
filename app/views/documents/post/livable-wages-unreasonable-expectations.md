@@ -7,7 +7,7 @@ excerpt:  "I work in an industry that demands highly skilled laborers but are co
 layout: post
 tags: Business
 categories: Software Development
-image: /images/2015/08/greed.jpg
+image: /images/2015/greed.jpg
 gallery:
 ribbon:
 document_class:

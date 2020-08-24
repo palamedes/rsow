@@ -7,7 +7,7 @@ excerpt: I feel that this socialism road people are trying to take us down will 
 layout: post
 tags: Politics, democratic socialism
 categories: Rants!
-image: /images/2016/socialism.png
+image: /images/2016/socialism.jpg
 gallery:
 ribbon:
 document_class:
