@@ -94,6 +94,19 @@ div.ui.window {
   }
 }
 
+div.ui.vertical.fluid.tabular.blog.menu {
+  display: grid;
+  grid-template-columns: 40px auto;
+  grid-gap: 1px;
+  a {
+    padding: 10px;
+    padding-left: 5px;
+    padding-right: 0;
+    border-left: 0;
+  }
+}
+
+
 .ui.basic.buttons.borderless {
   border: 0;
   border-radius: 0;
@@ -157,6 +170,13 @@ ul, ol {
       display: block;
     }
   }
+}
+h1:first-child {
+  margin-bottom: 0;
+}
+h1:first-child+em {
+  display: block;
+  margin-bottom: 30px;
 }
 
 .datetime {
