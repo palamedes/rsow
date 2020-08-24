@@ -11,7 +11,7 @@ class Documents
   # Add an item to the array (add processing here if needed)
   def << document
     # Convert the DATE field to an actual DATE!
-    document.date = DateTime.parse document.date
+    document.date = DateTime.parse document.date rescue DateTime.new
     # Stuff into docs array
     @docs << document
   end
