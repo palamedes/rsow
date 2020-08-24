@@ -160,7 +160,7 @@ tile_class:
    
  An image, located within /images
  
- ![an image alt text]({{ site.baseurl }}/images/jekyll-logo.png "an image title")
+ ![an image alt text]({{ site.baseurl }}/images/jekyll-logo.png "an image title"){: .class}
  
  * A bulletted list
  - alternative syntax 1
