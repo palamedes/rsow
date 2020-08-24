@@ -118,7 +118,7 @@ The average amount of time seemed to pan out at around 10.  I wanted to make tha
 ## A four place plane for wife and "kids"
 The majority of the time, it will likely be just me flying in the plane.  But my wife made the point that if I'm going to get an aircraft, an expensive luxury item, I should get one that will do all the things.  And one of those things was for us to be able to travel around the country as a couple.  And that means, bringing the "kids."  The kids in this case are our two little dogs.  That with some light luggage.
 
-![RV-10 Interior](/images/2015/interior_rv-10.gif){: .float .left .padded .right}
+![RV-10 Interior](/images/2015/interior_rv-10.jpg){: .float .left .padded .right}
 
 ## Comfort!
 I'm both tall, and wide.  I need a plane I can sit in comfortably and to be completely honest, most aircraft I have been in are absolutely not comfortable at all.  My flight instructors Cessna 172 is a workhorse, and will get ya from point A to point B (slowly) but not in anything remotely approaching comfort.  It's just too narrow.  I have broad shoulders and I really don't like being jammed up against that door, or my flight instructor.
