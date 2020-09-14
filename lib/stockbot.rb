@@ -13,16 +13,43 @@ class StockBot
   end
 
   def self.go
+    # This is going to be a looping system
     looping = true
+    # We need to get our list of bots
     bots = self.getBots
+    # We need to determine how long to sleep between each pull, up to 5 seconds
+    timePer = 60 / bots.count
+    # Determine how long of a pause we are putting into place
+    pausePer = timePer - 3
+    # Total pause left over
+    totalPause = pausePer * bots.count
+    # Define our start and end times so we don't loop in data during off market times
+    startTime = DateTime.now.midnight + 9.hours + 30.minutes
+    endTime = DateTime.now.midnight + 16.hours + 30.minutes
+
     while looping == true
-      bots.each do |bot|
-        bot.getQuote rescue "NO GET QUOTE"
-        bot.saveQuote rescue "NO SAVE QUOTE"
-        sleep 5
+      # Clear the IRB Terminal
+      system('clear')
+      # Are we after 9:30 and before 16:30
+      if DateTime.now.between? startTime, endTime
+        # For each bot do this loop
+        bots.each do |bot|
+          # Sleep between each pull so we don't anger the internet gods
+          sleep pausePer
+          # Add some rescues that don't actually do anything
+          bot.getQuote rescue "NO GET QUOTE"
+          bot.saveQuote rescue "NO SAVE QUOTE"
+        end
+        # Sleep for just over a minute and go again.
+        puts "Sleeping #{totalPause}\n\n\n"
+        sleep totalPause
+      else
+        # Tell the world we are sleeping until start time.
+        timeUntilStart = startTime.to_i - DateTime.now.to_i
+        puts "Sleeping until between market hours :: #{Time.at(timeUntilStart).utc.strftime("%H:%M:%S")}"
+        sleep 1
       end
-      # Sleep for just over a minute and go again.
-      sleep 30
+
     end
   end
 
@@ -62,7 +89,7 @@ class StockBot
   # Get a quote for a symbol and stuff it into the db
   def getQuote
     # Make Yahoo Faraday Request
-    req = Faraday.get("https://search.yahoo.com/search?p=#{@symbol}") rescue nil
+    req = Faraday.get("https://search.yahoo.com/search?p=#{@symbol} stock quote") rescue nil
     if req.nil? || req.body.nil?
       puts "Faraday Request threwup"
       puts req.inspect
@@ -88,7 +115,7 @@ class StockBot
   # Save that sucker
   def saveQuote
     return if @quote.nil?
-    Valuation.create company: company,
+    Rawquote.create company: company,
                      price: @quote,
                      volume: 0,
                      datetime: DateTime.now
