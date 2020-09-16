@@ -23,11 +23,12 @@ class StockBot
     pausePer = timePer - 3
     # Total pause left over
     totalPause = pausePer * bots.count
-    # Define our start and end times so we don't loop in data during off market times
-    startTime = DateTime.now.midnight + 9.hours + 30.minutes
-    endTime = DateTime.now.midnight + 16.hours + 30.minutes
 
     while looping == true
+      # Define our start and end times so we don't loop in data during off market times
+      startTime = DateTime.now.midnight + 9.hours + 30.minutes
+      endTime = DateTime.now.midnight + 16.hours + 30.minutes
+
       # Clear the IRB Terminal
       system('clear')
       # Are we after 9:30 and before 16:30
