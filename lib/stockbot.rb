@@ -47,6 +47,7 @@ class StockBot
       else
         # Tell the world we are sleeping until start time.
         timeUntilStart = startTime.to_i - DateTime.now.to_i
+        puts "#{startTime} :: #{DateTime.now} :: #{endTime}"
         puts "Sleeping until between market hours :: #{Time.at(timeUntilStart).utc.strftime("%H:%M:%S")}"
         sleep 1
       end
