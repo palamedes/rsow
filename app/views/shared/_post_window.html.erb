@@ -27,8 +27,9 @@
               <img src="<%= post.image %>" class="icon">
             </a>
             <a href="/<%= post.href %>" class="follow item <%= 'active' if post.slug == @document.slug %>">
-              <span><%= post.title %></span>
-              <small><%= post.date.strftime("%B %d, %Y") %></small>
+              <span><%= post.title %>
+                <small><%= post.date.strftime("%B %d, %Y") %></small>
+              </span>
             </a>
           <% end %>
         </div>
