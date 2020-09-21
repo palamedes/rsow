@@ -32,7 +32,9 @@ $(document).on('ready turbolinks:load', function() {
       bringToFront($(this));
     },
     stop: function(drag, ui) {
-      setWindowLocationData($(this));
+      if (!$(this).hasClass('maximized')) {
+        setWindowLocationData($(this));
+      }
     }
   }
 
