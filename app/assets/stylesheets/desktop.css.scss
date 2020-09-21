@@ -75,9 +75,13 @@ div.ui.window {
       direction: ltr;
       height: 100%;
       a.item {
+        padding: 5px 0 5px 5px;
         font-size: 1.2em;
         font-weight: bold;
-        height: 50px;
+        min-height: 60px;
+        img {
+          margin-top: 0px;
+        }
         small {
           display: block;
           font-size: 0.7em;
