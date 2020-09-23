@@ -17,6 +17,12 @@ $(document).on('ready turbolinks:load', function() {
     handles: 'se',
     resize: function(resize, ui) {
       adjustInternalWindowHeight($(this), ui.size.height);
+      // If this was previously maximized, remove that status
+      $(this).removeClass('maximized');
+      $(this).find('button.restore.window').addClass('hidden');
+      $(this).find('button.maximize.window').removeClass('hidden');
+      // Pop State from History
+      history.pushState({}, "", "/");
     },
     stop: function(resize, ui) {
       adjustInternalWindowHeight($(this), ui.size.height);
@@ -88,8 +94,8 @@ $(document).on('ready turbolinks:load', function() {
       // Pop State from History
       history.pushState({}, "", "/");
       // Update header buttons accordingly
-      $window.find('.maximize').removeClass('hidden');
-      $window.find('.restore').addClass('hidden');
+      $window.find('button.maximize').removeClass('hidden');
+      $window.find('button.restore').addClass('hidden');
     }
   }
 
@@ -107,8 +113,8 @@ $(document).on('ready turbolinks:load', function() {
       var loc = $window.attr('id').replace('blog-', 'blog/');
       history.pushState({}, $window.find('.active.header.item').html().trim(), "/"+loc)
       // Update header buttons accordingly
-      $window.find('.restore').removeClass('hidden');
-      $window.find('.maximize').addClass('hidden');
+      $window.find('button.restore').removeClass('hidden');
+      $window.find('button.maximize').addClass('hidden');
     }
   }
 
