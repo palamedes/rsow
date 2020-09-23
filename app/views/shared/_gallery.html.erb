@@ -1,0 +1,6 @@
+<h3>Image Gallery</h3>
+<hr />
+
+<% @document.gallery.each do |item| %>
+  <img src="<%= item %>" class="lightbox gallery" />
+<% end %>
