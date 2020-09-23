@@ -1,5 +1,5 @@
 /**
- * jQuery Lightbox v1.5
+ * jQuery Lightbox v1.6
  * by Jason "Palamedes" Ellis <palamedes[at]rocketmail.com>
  * Requires jQuery 1.3 or later
  *
@@ -24,13 +24,18 @@
  * Jason
  */
 
-$(document).ready(function() {
+$(document).on('ready turbolinks:load', function() {
 
   $(".lightbox").on('click', function() {
     // localize this
     var dis = $(this);
-    // get the href
-    var source = dis.attr('href');
+    var source = null;
+    // Get our source (based on the tag type)
+    if (dis[0].tagName == "IMG") {
+      source = dis.attr('src');
+    } else if (dis[0].tagName == "A") {
+      source = dis.attr('href');
+    }
     // make sure its an image
     var re = /^.*?(.gif|.jpg|.png)$/i;
     var isImage = re.exec(source);
@@ -232,6 +237,10 @@ $(document).ready(function() {
 });
 
 /* Changelog
+
+ 1.6
+ * Added ability to open an anchor or an image tag (src vs href)
+ * Updated on load to handle turbo links
 
  1.5
  * Added push states to the light box so the navigation bar reflects where we are.
