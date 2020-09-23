@@ -17,8 +17,11 @@ module MarkdownParser
         pageContent = ''
         # What we use to know if we are working with the vars
         parsingVariables = false
+        # variable key
+        variableKey = nil
         # Interate through the file line by line and get our variables
         template.lines.each_with_index do |line, index|
+
           # If we are at index zero and we have --- then we know we are starting our variables
           if index == 0 && line.chomp == "---"
             # We are parsing variables
@@ -37,23 +40,35 @@ module MarkdownParser
             next
             #End of variables.. the rest can go here.
           end
+
           # If we are parsing variables then do that.
           if parsingVariables
             document[:has_variables] = true
-            # Split our line into key : value
-            parsedVariable = line.split ':', 2
-            # Define our key and convert it to a symbol
-            key = parsedVariable.first.strip.to_sym
-            # Cast as boolean if it's a boolean value
-            value = parsedVariable.last.strip
-            value = ActiveModel::Type::Boolean.new.cast(value) if value == 'true' || value == 'false'
-            # Inject that into our pageVariables stripping white space
-            document[key] = value
+            # if the first character is a dash (-) then we are adding an array of things to previous key
+            if line.start_with? /\s*-/
+              # Split our line out of the - list and get the value
+              value = line.split('-', 2).last.strip
+              # Convert our variable to an array if it isn't one already
+              document[variableKey] << ", " unless document[variableKey].empty?
+              # Inject that into our pageVariables stripping white space as an array
+              document[variableKey] << value
+            else
+              # Split our line into key : value
+              parsedVariable = line.split ':', 2
+              # Define our key and convert it to a symbol
+              variableKey = parsedVariable.first.strip.to_sym
+              # Cast as boolean if it's a boolean value
+              value = parsedVariable.last.strip
+              value = ActiveModel::Type::Boolean.new.cast(value) if value == 'true' || value == 'false'
+              # Inject that into our pageVariables stripping white space
+              document[variableKey] = value
+            end
             # else we are parsing the rest of the page
           else
             # Do nothing with it.. at this point it must be content
             pageContent << line
           end
+
         end
         # Inject the HTML into the document
         document[:html] = Kramdown::Document.new(pageContent).to_html
