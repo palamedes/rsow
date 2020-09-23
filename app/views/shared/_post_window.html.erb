@@ -39,6 +39,7 @@
         <h1><%= @document.title.html_safe %></h1>
         <em><%= @document.date.html_safe %></em>
         <%= @document.html.html_safe %>
+        <%= render 'shared/gallery' if @document.has_gallery? %>
         <%= render 'shared/post_comments' if @document.allow_comments %>
       </div>
 
