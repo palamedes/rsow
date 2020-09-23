@@ -5,7 +5,8 @@ title: Flip-top Workbench
 excerpt: Both of my grandfathers were darn good carpenters, and my father is too though he wont much admit it.  Well apparently I do alright myself!
 layout: post
 tags: Wood Working
-categories: Hobbies
+categories: 
+- Hobbies
 image: /images/2013/fliptopworkbench01.jpg
 gallery:
 - /images/2013/fliptopworkbench01.jpg
@@ -23,7 +24,7 @@ date: Aug 13, 2013
 icon: gavel
 ---
 
-![Flip Top Workbench](/images/2013/fliptopworkbench01.jpg){: .float .right. scaled}
+![Flip Top Workbench](/images/2013/fliptopworkbench01.jpg){: .lightbox .float .right .scaled}
 
 Both of my grandfathers were darn good carpenters, and my father is too though he wont much admit it.  Well apparently I do alright myself!
 
