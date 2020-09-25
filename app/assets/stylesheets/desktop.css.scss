@@ -9,6 +9,10 @@ body {
   background: linear-gradient(220deg, rgba(240,242,231,1) 0%, rgba(72,129,149,1) 35%, rgba(24,45,88,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f0f2e7",endColorstr="#182d58",GradientType=1);
   overflow: hidden;
+  font-size: 16px;
+}
+.ui.segment {
+  font-size: inherit;
 }
 
 .ui.inverted.menu.start-bar {
