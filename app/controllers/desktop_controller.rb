@@ -67,6 +67,19 @@ class DesktopController < ApplicationController
     end
   end
 
+  # [GET] /sitemap.xml
+  # We need to get a sitemap for google and others
+  def sitemap
+    respond_to do |format|
+      format.xml {
+        # Get all our posts
+        @posts = MarkdownParser::Parser.posts.order_by(:date)
+        # Render sitemap
+        render 'sitemap.xml'
+      }
+    end
+  end
+
   protected
 
   # Get the first blog post link and set it.
