@@ -3,6 +3,7 @@ published: true
 sitemap: true
 priority: 0.5
 type: post
+date: Dec 30, 2013
 title: Hardware Review: Oculus Rift
 excerpt: After my first 48 hours with the Oculus Rift;  Holy crap.  It's awesome.  Not perfect by any stretch of the meaning, but as developer kits go it's impressive as hell.  Once the final consumer version comes out, you should get one.
 layout: post
@@ -16,8 +17,8 @@ duration:
 costs: 
 updates:
 slug: blog-oculus-rift
-date: Dec 30, 2013
 icon: file alternate outline
+updates: 
 ---
 
 ![Old Oculus Rift](/images/2013/oculus.jpg){: .float .right .scaled}

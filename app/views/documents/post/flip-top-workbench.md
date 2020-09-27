@@ -3,6 +3,7 @@ published: true
 sitemap: true
 priority: 0.5
 type: post
+date: Aug 13, 2013
 title: Flip-top Workbench
 excerpt: Both of my grandfathers were darn good carpenters, and my father is too though he wont much admit it.  Well apparently I do alright myself!
 layout: post
@@ -22,8 +23,8 @@ ribbon:
 private: false
 allow_comments: true
 slug: blog-flip-top-workbench
-date: Aug 13, 2013
 icon: gavel
+updates: 
 ---
 
 ![Flip Top Workbench](/images/2013/fliptopworkbench01.jpg){: .lightbox .float .right .scaled}

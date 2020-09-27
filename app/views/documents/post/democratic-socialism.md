@@ -3,6 +3,7 @@ published: true
 sitemap: true
 priority: 0.5
 type: post
+date: Feb 29, 2016
 title: Democratic Socialism
 excerpt: I feel that this socialism road people are trying to take us down will have a very bad ending... 
 layout: post
@@ -18,8 +19,8 @@ duration:
 costs: 
 updates:
 slug: blog-democratic-socialism
-date: Feb 29, 2016
 icon: file alternate outline
+updates:
 ---
 
 ![Socialism](/images/2016/socialism.jpg){: .float .right .scaled}

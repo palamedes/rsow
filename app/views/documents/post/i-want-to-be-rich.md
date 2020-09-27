@@ -4,6 +4,7 @@ sitemap: true
 priority: 0.5
 title:  I want to be rich! So I am willing to take risks..
 excerpt:  There's this radical notion that people who earned money by taking the risk to get it, shouldn't be allowed to keep what they earned and some how they are being greedy for wanting to.. uh.. wut?
+date: Apr 25, 2018
 layout: post
 tags:
 categories: Rants!
@@ -17,8 +18,8 @@ duration:
 costs:
 updates:
 slug: blog-i-want-to-be-rich
-date: Apr 25, 2018
 icon: file alternate outline
+updates: 
 ---
 
 

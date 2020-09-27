@@ -2,6 +2,7 @@
 published: true
 sitemap: true
 priority: 0.5
+date: May 15, 2017
 title: Software Developer Burnout... I suffered it.
 excerpt:  I'm sure every industry has some version of developer burnout but with folks in software it's extremely bad, and it takes months if not years to come back.. if they ever do.
 layout: post
@@ -17,8 +18,8 @@ duration:
 costs: 
 updates:
 slug: blog-developer-burnout
-date: May 15, 2017
 icon: file alternate outline
+updates: 
 ---
 
 ![Developer Burnout](/images/2017/burnout.jpg){: .float .right .scaled}

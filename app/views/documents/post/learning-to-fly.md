@@ -3,6 +3,7 @@ published: true
 sitemap: true
 priority: 0.5
 type: post
+date: Sep 11, 2014
 title: Learning to fly!
 excerpt: I have always wanted to fly and have taken several steps towards doing just that in the past, but each time I would run out of money or something else in life would get in the way - No more.  
 layout: post
@@ -20,8 +21,8 @@ tile_class:
 private: false
 allow_comments: true
 slug: blog-learning-to-fly
-date: Sep 11, 2014
 icon: file alternate outline
+updates: 
 ---
 
 ![N84086](/images/2014/N84086.jpg){: .float .right .scaled}

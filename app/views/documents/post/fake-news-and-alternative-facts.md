@@ -2,6 +2,7 @@
 published: true
 sitemap: true
 priority: 0.5
+date: Jan 08, 2019
 title: Fake News and Alternative Facts
 excerpt: Alternative Facts, a much maligned term that causes no small amount of mocking and laughter but actually has merit.   Let me explain...
 layout: post
@@ -16,8 +17,8 @@ allow_comments: true
 duration:
 costs: 
 slug: blog-fake-news-and-alternative-facts
-date: Jan 08, 2019
 icon: file alternate outline
+updates: 
 ---
 
 ![Media Bias](/images/2019/media_bias.jpg){: .float .right .scaled}

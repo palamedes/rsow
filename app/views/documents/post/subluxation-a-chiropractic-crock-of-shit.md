@@ -3,6 +3,7 @@ published: true
 sitemap: true
 priority: 1.0
 type: post
+date: Jan 25, 2008
 title: Subluxation: A Chiropractic crock of shit!
 excerpt: Subluxation is a real medical term,  it is an incomplete or partial dislocation of a joint or an organ.  As such if you have a subluxation, a dislocated joint or organ, you need to seek real medical attention.
 layout: post
@@ -13,8 +14,8 @@ ribbon:
 private: false
 allow_comments: false
 slug: blog-subluxation-a-chiropractic-crock-of-shit
-date: Jan 25, 2008
 icon: exclamation triangle
+updates:
 ---
 
 ![Subluxation](/images/2008/subluxation.jpg){: .lightbox .float .right}

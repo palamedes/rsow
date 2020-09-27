@@ -3,6 +3,7 @@ published: true
 sitemap: true
 priority: 0.5
 type: post
+date: Jan 03, 2014
 title: I want to go soaring
 excerpt: I can suffer flying commercial to go back and forth to Texas when I need to go because it's only $300 round trip, but to have fun in the sky I can use a glider.  It's more fun, safer and far cheaper that general aviation.
 layout: post
@@ -17,8 +18,8 @@ ribbon:
 private: false
 allow_comments: true
 slug: blog-i-want-to-soar
-date: Jan 03, 2014
 icon: file alternate outline
+updates: 
 ---
 
 ![Sail Plane](/images/2014/glider-on-ground.jpg){: .float .right .scaled}

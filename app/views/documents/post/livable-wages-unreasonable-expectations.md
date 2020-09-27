@@ -3,6 +3,7 @@ published: true
 sitemap: true
 priority: 0.5
 type: post
+date: Aug 18, 2015
 title: Livable Wages and Unreasonable Client Expectations
 excerpt:  "I work in an industry that demands highly skilled laborers but are constantly bombarded by accusations of greed or people that scoff as the costs.  Plumbers make more!" 
 layout: post
@@ -18,8 +19,8 @@ duration:
 costs:
 updates:
 slug: blog-livable-wages-unreasonable-expectations
-date: Aug 18, 2015
 icon: file alternate outline
+updates: 
 ---
 
 ![Greed / Bag of money](/images/2015/greed.jpg){: .float .right}

@@ -1,8 +1,9 @@
 ---
 published: true
-type: post
 sitemap: true
 priority: 0.5
+type: post
+date: Dec 10, 2013
 title: State of the Industry Concerns
 excerpt: When your software goes from 'magic' to just another tool in your toolbox that you fully understand, then you can call yourself an expert.  Until then, you have some learning to do.
 layout: post
@@ -16,8 +17,8 @@ duration:
 costs: 
 updates:
 slug: blog-state-of-industry
-date: Dec 10, 2013
-icon: file alternate outline\
+icon: file alternate outline
+updates: 
 ---
 
 ![State of the industry](/images/2013/cliff.jpg){: .float .right .scaled}

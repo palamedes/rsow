@@ -1,8 +1,9 @@
 ---
 published: true
-type: post
 sitemap: true
 priority: 0.5
+type: post
+date: Jan 01, 2015
 title: Sometimes you just have to fire a client
 excerpt: Most people don't really think of clients as "fireable", including clients themselves... Think again.  Sometimes the best thing a company can do is get rid of that problem client by giving them the boot.  
 layout: post
@@ -14,8 +15,8 @@ ribbon:
 private: false
 allow_comments: true
 slug: blog-sometimes-you-just-have-to-fire-a-client
-date: Jan 01, 2015
 icon: file alternate outline
+updates: 
 ---
 
 ![You're Fired](/images/2015/fired-image-web.jpg){: .float .right}
