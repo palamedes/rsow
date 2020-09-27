@@ -1,11 +1,11 @@
 # Class document is the object returned by the parser
 class Document
   attr_writer   :slug, :gallery
-  attr_accessor :has_variables, :file_name,
+  attr_accessor :has_variables, :file_name, :date, :updates,
                 :published, :sitemap, :priority,
                 :title, :excerpt, :layout, :tags, :categories, :image,
                 :ribbon, :document_class, :private, :allow_comments, :duration,
-                :costs, :date, :icon, :audio, :audioautoplay, :audioloop, :audiovolume,
+                :costs, :icon, :audio, :audioautoplay, :audioloop, :audiovolume,
                 :html
 
   # Does this document have any audio?
@@ -31,12 +31,19 @@ class Document
 
   # Gallery maybe an array or a single item.  Act accordingly
   def gallery
-    @gallery.split ','
+    @gallery.split '|'
   end
 
   # Get the full URI for this document
   def uri
     "http://www.randomstringofwords.com/#{href}"
+  end
+
+  # Get the date of the last time this document was updated (or the creation date)
+  def lastmod
+    allDates = @updates
+    allDates << @date
+    allDates.max
   end
 
 end
