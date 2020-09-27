@@ -1,6 +1,7 @@
 ---
 published: false
 sitemap: true
+priority: 0.5
 title:
 excerpt:
 date: 
@@ -30,6 +31,8 @@ published: true|false
 sitemap: true|false
  ^ Should this file be included in the site map?
 
+priority: {0.0 - 1.0}
+ ^ This is the site priority in the sitemap used by google.
 
 title: {title string, try to keep it under 100 characters }
  ^ This is the title link that shows up at the top of the page, and in lists
