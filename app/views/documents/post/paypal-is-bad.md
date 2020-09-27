@@ -1,6 +1,7 @@
 ---
 published: true
 sitemap: true
+priority: 0.5
 title: Paypal put me in a limited state for suspicious activity
 excerpt: I'm a verified paypal member and have been since 2001.  They have my bank information and I have both sent and received thousands of dollars over the years through paypal.  I have never had any issues, until now.  I'm suddenly in a limited state due to suspicious activity. However, they can't/won't say what that suspicious activity actually is.
 layout: post

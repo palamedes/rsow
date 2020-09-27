@@ -1,6 +1,8 @@
 ---
 published: true
 type: post
+sitemap: true
+priority: 0.5
 title: State of the Industry Concerns
 excerpt: When your software goes from 'magic' to just another tool in your toolbox that you fully understand, then you can call yourself an expert.  Until then, you have some learning to do.
 layout: post

@@ -1,6 +1,7 @@
 ---
 published: true
 sitemap: true
+priority: 0.5
 type: post
 title: Democratic Socialism
 excerpt: I feel that this socialism road people are trying to take us down will have a very bad ending... 

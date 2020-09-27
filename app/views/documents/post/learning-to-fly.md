@@ -1,5 +1,7 @@
 ---
 published: true
+sitemap: true
+priority: 0.5
 type: post
 title: Learning to fly!
 excerpt: I have always wanted to fly and have taken several steps towards doing just that in the past, but each time I would run out of money or something else in life would get in the way - No more.  

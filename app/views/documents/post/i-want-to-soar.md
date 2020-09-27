@@ -1,5 +1,7 @@
 ---
 published: true
+sitemap: true
+priority: 0.5
 type: post
 title: I want to go soaring
 excerpt: I can suffer flying commercial to go back and forth to Texas when I need to go because it's only $300 round trip, but to have fun in the sky I can use a glider.  It's more fun, safer and far cheaper that general aviation.

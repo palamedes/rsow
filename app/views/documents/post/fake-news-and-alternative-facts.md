@@ -1,6 +1,7 @@
 ---
 published: true
 sitemap: true
+priority: 0.5
 title: Fake News and Alternative Facts
 excerpt: Alternative Facts, a much maligned term that causes no small amount of mocking and laughter but actually has merit.   Let me explain...
 layout: post

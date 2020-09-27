@@ -1,6 +1,8 @@
 ---
 published: true
 type: post
+sitemap: true
+priority: 0.5
 title: Sometimes you just have to fire a client
 excerpt: Most people don't really think of clients as "fireable", including clients themselves... Think again.  Sometimes the best thing a company can do is get rid of that problem client by giving them the boot.  
 layout: post

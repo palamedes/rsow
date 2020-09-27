@@ -1,5 +1,7 @@
 ---
 published: true
+sitemap: true
+priority: 0.5
 type: post
 title: Flip-top Workbench
 excerpt: Both of my grandfathers were darn good carpenters, and my father is too though he wont much admit it.  Well apparently I do alright myself!

@@ -1,6 +1,7 @@
 ---
 published: true
 sitemap: true
+priority: 0.5
 title: Software Developer Burnout... I suffered it.
 excerpt:  I'm sure every industry has some version of developer burnout but with folks in software it's extremely bad, and it takes months if not years to come back.. if they ever do.
 layout: post
