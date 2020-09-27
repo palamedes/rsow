@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <% @pages.each do |document| %>
+  <% next unless document.published %>
+  <% next unless document.sitemap %>
+   <url>
+      <loc><%= document.uri %></loc>
+      <lastmod><%= document.date %></lastmod>
+      <changefreq>monthly</changefreq>
+      <priority><%= document.priority %></priority>
+   </url>
+   <% end %>
+
+  <% @posts.each do |document| %>
+  <% next unless document.published %>
+  <% next unless document.sitemap %>
+   <url>
+      <loc><%= document.uri %></loc>
+      <lastmod><%= document.date %></lastmod>
+      <changefreq>monthly</changefreq>
+      <priority><%= document.priority %></priority>
+   </url>
+   <% end %>
+
+</urlset>
