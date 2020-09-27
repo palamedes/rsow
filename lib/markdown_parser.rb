@@ -115,6 +115,18 @@ module MarkdownParser
       return posts
     end
 
+    # Get all pages and return them with just title, exerpt, icon, and link
+    def self.pages
+      pages = Documents.new
+      files = Dir.glob Rails.root.join('app','views','documents','page', '*')
+      files.each do |filename|
+        filename.gsub!(/.*\//,"page/\\1")
+        document = self.parse filename
+        pages << document
+      end
+      return pages
+    end
+
     # Objectify the array with defaults if needed
     def self.objectify document
       return nil if document.nil?
@@ -138,7 +150,7 @@ module MarkdownParser
       doc.duration        = document[:duration]       || ''
       doc.costs           = document[:costs]          || ''
       doc.slug            = document[:slug]           || ''
-      doc.date            = document[:date]           || ''
+      doc.date            = document[:date]           || 'Jun 9, 1972'
       doc.icon            = document[:icon]           || ''
       doc.audio           = document[:audio]          || ''
       doc.audioautoplay   = document[:audioautoplay]  || false
