@@ -11,16 +11,14 @@ class Documents
   # Add an item to the array (add processing here if needed)
   def << document
     # Convert the DATE field to an actual DATE!
-    document.date = DateTime.parse document.date rescue DateTime.new
+    document.date = DateTime.parse document.date rescue nil
     # Convert all the updates to an actuall DATE!
-
-    puts document.updates
-
-    # document.updates = document.updates.each {|d|
-    #   next if d.empty?
-    #   DateTime.parse d rescue DateTime.new
-    # }
-    # Stuff into docs array
+    updates = []
+    document.updates.split('|').each do |date|
+      next if date.empty?
+      updates << DateTime.parse(date) rescue nil
+    end
+    document.updates = updates
     @docs << document
   end
 
