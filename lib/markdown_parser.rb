@@ -151,6 +151,7 @@ module MarkdownParser
       doc.costs           = document[:costs]          || ''
       doc.slug            = document[:slug]           || ''
       doc.date            = document[:date]           || 'Jun 9, 1972'
+      doc.updates         = document[:updates]        || ''
       doc.icon            = document[:icon]           || ''
       doc.audio           = document[:audio]          || ''
       doc.audioautoplay   = document[:audioautoplay]  || false
