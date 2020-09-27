@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :stocks, only: [ :index, :show ]
   get '/stocks/:symbol/valuation', to: "stocks#valuation", as: :valuation, defaults: {format: :json}
 
+  # Hard coded sitemap.xml location
+  get '/sitemap', to: "desktop#sitemap", as: :sitemap, defaults: {format: :xml}
+
   # Wildcard Page route which will show desktop and window
   get '/blog/:post', to: "desktop#post", as: :post
   get '/:page', to: "desktop#page", as: :page
