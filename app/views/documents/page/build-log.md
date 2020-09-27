@@ -1,8 +1,11 @@
 ---
 published: true
+sitemap: true
+priority: 0.8
+layout: page
+date: Feb 14, 2015
 title: Van's Aircraft RV-10 Build Log
 excerpt: RV-10 Build Log
-layout: page
 tags:
 categories:
 image:

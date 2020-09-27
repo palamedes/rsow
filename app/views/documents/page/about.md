@@ -1,8 +1,11 @@
 ---
 published: true
+sitemap: true
+priority: 0.8
+date: Jun 9, 1972
+layout: page
 title: About Me
 excerpt: I am a calm, considerate problem solver. I am a self taught software engineer and have worked with computers all my life. I am familiar with and have used most major operating systems and have an almost intuitive understanding of all major software packages, as well as having professional experience with most of them.
-layout: page
 tags:
 categories:
 image:
@@ -10,6 +13,7 @@ private: true
 allow_comments: false
 slug: about
 icon: address book
+updates: Jan 1, 2020
 ---
 
 ![Email Address](/images/1972/email.gif){: .float .right .padded .bottom}

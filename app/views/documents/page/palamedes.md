@@ -1,6 +1,9 @@
 ---
 published: true
+sitemap: true
+priority: 0.8
 layout: page
+date: Jun 9, 1972
 title: Palamedes -- Historical Reference
 excerpt: Palamedes, son of Nauplius, is the inventor of the dice and of several letters of the alphabet. Palamedes outwitted Odysseus, making him join the expedition against Troy. For that reason Odysseus was hostile to Palamedes; and during the war Odysseus, having taken a Trojan prisoner, compelled him to write a letter of treasonable purport ostensibly sent by Priam to Palamedes; and having buried gold in the quarters of Palamedes, dropped the letter in the camp. Agamemnon read the letter, found the gold, and delivered up Palamedes to the allies to be stoned as a traitor.
 tags: 

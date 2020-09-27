@@ -1,8 +1,11 @@
 ---
 published: true
+sitemap: true
+priority: 0.8
+layout: page
+date: Jun 9, 1972
 title: Resume
 excerpt: I am a calm, considerate problem solver. I am a self taught software engineer and have worked with computers all my life. I am familiar with and have used most major operating systems and have an almost intuitive understanding of all major software packages, as well as having professional experience with most of them.
-layout: page
 tags:
 categories:
 image: /images/photos/me/jason-ellis-square.png
@@ -10,8 +13,8 @@ ribbon:
 private: false
 allow_comments: false
 slug: resume
-updates: 07/24/2020
 icon: file outline
+updates: 07/24/2020
 ---
 
 [![Jason Ellis](/images/photos/me/jason-ellis-square.png){: .scaled .padded .left}](/images/photos/me/jason-ellis-square.png "Jason Ellis"){: .float .right}
