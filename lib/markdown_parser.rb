@@ -123,6 +123,7 @@ module MarkdownParser
       doc.has_variables   = document[:has_variables]  || false
       doc.published       = document[:published]      || false
       doc.sitemap         = document[:sitemap]        || false
+      doc.priority        = document[:priority]       || 0.5
       doc.title           = document[:title]          || ''
       doc.excerpt         = document[:excerpt]        || ''
       doc.layout          = document[:layout]         || 'post'

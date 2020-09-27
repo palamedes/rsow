@@ -2,7 +2,8 @@
 class Document
   attr_writer   :slug, :gallery
   attr_accessor :has_variables, :file_name,
-                :published, :sitemap, :title, :excerpt, :layout, :tags, :categories, :image,
+                :published, :sitemap, :priority,
+                :title, :excerpt, :layout, :tags, :categories, :image,
                 :ribbon, :document_class, :private, :allow_comments, :duration,
                 :costs, :date, :icon, :audio, :audioautoplay, :audioloop, :audiovolume,
                 :html
