@@ -33,4 +33,9 @@ class Document
     @gallery.split ','
   end
 
+  # Get the full URI for this document
+  def uri
+    "http://www.randomstringofwords.com/#{href}"
+  end
+
 end
