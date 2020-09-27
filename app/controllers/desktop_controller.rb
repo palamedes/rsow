@@ -72,6 +72,8 @@ class DesktopController < ApplicationController
   def sitemap
     respond_to do |format|
       format.xml {
+        # Get all our pages
+        @pages = MarkdownParser::Parser.pages.order_by(:date)
         # Get all our posts
         @posts = MarkdownParser::Parser.posts.order_by(:date)
         # Render sitemap
