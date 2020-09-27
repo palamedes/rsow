@@ -2,10 +2,10 @@
 published: false
 sitemap: true
 priority: 0.5
+layout: post
+date: 
 title:
 excerpt:
-date: 
-layout: post
 tags:
 categories:
 image: 
@@ -16,13 +16,13 @@ private: false
 allow_comments: true
 duration:
 costs: 
-updates: 
 slug: template
 icon: 
 audio: 
 audioautoplay: false
 audioloop: false
 audiovolume: 1
+updates: 
 ---
 
 published: true|false
