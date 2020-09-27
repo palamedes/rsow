@@ -12,6 +12,14 @@ class Documents
   def << document
     # Convert the DATE field to an actual DATE!
     document.date = DateTime.parse document.date rescue DateTime.new
+    # Convert all the updates to an actuall DATE!
+
+    puts document.updates
+
+    # document.updates = document.updates.each {|d|
+    #   next if d.empty?
+    #   DateTime.parse d rescue DateTime.new
+    # }
     # Stuff into docs array
     @docs << document
   end

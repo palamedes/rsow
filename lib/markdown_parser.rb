@@ -49,7 +49,7 @@ module MarkdownParser
               # Split our line out of the - list and get the value
               value = line.split('-', 2).last.strip
               # Convert our variable to an array if it isn't one already
-              document[variableKey] << ", " unless document[variableKey].empty?
+              document[variableKey] << "|" unless document[variableKey].empty?
               # Inject that into our pageVariables stripping white space as an array
               document[variableKey] << value
             else
@@ -127,6 +127,7 @@ module MarkdownParser
       return pages
     end
 
+    # Objectify the array with defaults if needed
     # Objectify the array with defaults if needed
     def self.objectify document
       return nil if document.nil?
