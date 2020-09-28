@@ -1,9 +1,9 @@
 # Class document is the object returned by the parser
 class Document
-  attr_writer   :slug, :gallery
+  attr_writer   :slug, :gallery, :image
   attr_accessor :has_variables, :file_name, :date, :updates,
                 :published, :sitemap, :priority,
-                :title, :excerpt, :layout, :tags, :categories, :image,
+                :title, :excerpt, :layout, :tags, :categories,
                 :ribbon, :document_class, :private, :allow_comments, :duration,
                 :costs, :icon, :audio, :audioautoplay, :audioloop, :audiovolume,
                 :html
@@ -31,7 +31,12 @@ class Document
 
   # Gallery maybe an array or a single item.  Act accordingly
   def gallery
-    @gallery.split '|'
+    @gallery.split('|').map{|img| Site.url_for img}
+  end
+
+  # Return the image
+  def image
+    Site.url_for @image
   end
 
   # Get the full URI for this document
