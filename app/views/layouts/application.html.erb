@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RSOW</title>
+
+    <title><% if @document %><%= @document.title %> :: <%= @document.excerpt %><% else %><%= Site.title %><% end %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%#
-    <meta name="description" content="{% if page.type == 'post' %}{{ page.title }} :: {{ page.excerpt }}{% else %}{{ site.description }}{% endif %}" />
+    <meta name="description" content="<% if @document %><%= @document.title %> :: <%= @document.excerpt %><% else %><%= Site.description %><% end %>" />
     <meta name="author" content="Jason Ellis" />
+    <meta name="URL" content="<%= @document ? @document.uri : Site.uri %>" />
 
-
-    <meta name="URL" content="{{ site.url }}" />
-    {%comment%}<meta name="fb:admin" content="710704899" />{%endcomment%}
     <meta name="fb:app_id" content="1184833678352308" />
 
-    <meta itemprop="name" content="Jason Ellis | {% if page.type == 'post' %}{{ page.title }}{% else %}{{ site.description }}{% if page.title %}| {{ page.title }}{% endif %}{% endif %}">
-    <meta itemprop="description" content="{% if page.type == 'post' %}{{ page.title }} :: {{ page.excerpt }}{% else %}{{ site.description }}{% endif %}">
-    <meta itemprop="image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% endif %}">
+    <meta itemprop="name" content="<% if @document %><%= @document.title %><% else %><%= Site.title %><% end %>">
+    <meta itemprop="description" content="<% if @document %><%= @document.excerpt %><% else %><%= Site.description %><% end %>"
+    >
+    <meta itemprop="image" content="<%= @document.image if @document %>">
 
-    <meta property="og:url"    content="{{ site.url }}" />
+    <meta property="og:url"    content="<%= Site.uri %>" />
     <meta property="og:type"   content="article" />
-    <meta property="og:title"  content="Jason Ellis | {% if page.type == 'post' %}{{ page.title }}{% else %}{{ site.description }}{% endif %}" />
-    <meta property="og:description"  content="{% if page.type == 'post' %}{{ page.excerpt }}{% else %}{{ site.description }}{% endif %}" />
-    <meta property="og:image"  content="{% if page.image %}{{ site.url }}{{ page.image }}{% endif %}" />
+    <meta property="og:title"  content="<% if @document %><%= @document.title %><% else %><%= Site.description %><% end %>" />
+    <meta property="og:description"  content="<% if @document %><%= @document.excerpt %><% else %><%= Site.description %><% end %>" />
+    <meta property="og:image"  content="<%= @document.image if @document %>" />
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Jason Ellis | {% if page.type == 'post' %}{{ page.title }}{% else %}{{ site.description }}{% if page.title %}| {{ page.title }}{% endif %}{% endif %}">
-    <meta name="twitter:description" content="{% if page.type == 'post' %}{{ page.title }} :: {{ page.excerpt }}{% else %}{{ site.description }}{% endif %}">
-    <meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% endif %}">
+    <meta name="twitter:title" content="<% if @document %><%= @document.title %><% else %><%= Site.description %><% end %>">
+    <meta name="twitter:description" content="<% if @document %><%= @document.excerpt %><% else %><%= Site.description %><% end %>">
+    <meta name="twitter:image" content="<%= @document.image if @document %>">
 
     <meta name="google-site-verification" content="wHMVNxhYpUZWA4VUYdvlrg6ib6CnrzZDdnMocpelhm0" />
 
-    %>
     <meta name="MS.LOCALE" content="EN-US" />
     <meta name="ROBOTS" content="index,follow" />
 
