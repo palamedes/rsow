@@ -146,7 +146,7 @@ module MarkdownParser
       doc.gallery         = document[:gallery]        || ''
       doc.ribbon          = document[:ribbon]         || ''
       doc.document_class  = document[:document_class] || ''
-      doc.private         = document[:private]        || true
+      doc.private         = document[:private]        || false
       doc.allow_comments  = document[:allow_comments] || false
       doc.duration        = document[:duration]       || ''
       doc.costs           = document[:costs]          || ''
