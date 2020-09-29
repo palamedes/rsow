@@ -22,7 +22,7 @@
 
         <div class="ui vertical fluid tabular blog menu">
           <% @posts.each do |post| %>
-
+            <% next unless post.published %>
             <a href="/<%= post.href %>" class="follow item <%= 'active' if post.slug == @document.slug %>">
               <img src="<%= post.image %>" class="icon">
             </a>
