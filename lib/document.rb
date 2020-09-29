@@ -1,9 +1,9 @@
 # Class document is the object returned by the parser
 class Document
-  attr_writer   :slug, :gallery, :image
+  attr_writer   :slug, :gallery, :image, :tags, :categories
   attr_accessor :has_variables, :file_name, :date, :updates,
                 :published, :sitemap, :priority,
-                :title, :excerpt, :layout, :tags, :categories,
+                :title, :excerpt, :layout,
                 :ribbon, :document_class, :private, :allow_comments, :duration,
                 :costs, :icon, :audio, :audioautoplay, :audioloop, :audiovolume,
                 :html
@@ -19,7 +19,6 @@ class Document
   end
 
   # get the href for this document
-  # @TOOD make it a FULL href?
   def href
     slug.gsub 'blog-', 'blog/'
   end
@@ -27,6 +26,16 @@ class Document
   # Return the file name if the slug isn't set
   def slug
     (@slug.nil? || @slug.empty?) ? @file_name.gsub(/^post\//, 'blog-').gsub(/\.md$/, '') : @slug
+  end
+
+  # Return an actual array of tags
+  def tags
+    @tags.split('|')
+  end
+
+  # Return an actual array of categories
+  def categories
+    @categories.split('|')
   end
 
   # Gallery maybe an array or a single item.  Act accordingly

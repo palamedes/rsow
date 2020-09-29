@@ -30,4 +30,14 @@ class Documents
     nil
   end
 
+  # Return an A-Z flattened unique array of tags
+  def tags
+    @docs.each.map {|d| d.tags }.flatten.uniq.sort
+  end
+
+  # Return an A-Z flattened unique array of categories
+  def categories
+    @docs.each.map {|d| d.categories }.flatten.uniq.sort
+  end
+
 end
