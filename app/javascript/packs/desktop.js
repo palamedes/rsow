@@ -192,7 +192,7 @@ $(document).on('ready turbolinks:load', function() {
     var dT = new Date();
     $dateTime = $('div.start-bar time');
     var h = dT.getHours();
-    var ap = h > 12 ? 'PM' : 'AM';
+    var ap = h >= 12 ? 'PM' : 'AM';
     h = h > 12 ? h-12 : h;
     var m = dT.getMinutes();
     m = m < 9 ? '0'+m : m;
