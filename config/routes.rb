@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  # Vellum.Space
+  scope '/vellum.space' do
+    get '/', to: "vellum_space#index"
+  end
+
   # Stocks Resource
   resources :stocks, only: [ :index, :show ]
   get '/stocks/:symbol/valuation', to: "stocks#valuation", as: :valuation, defaults: {format: :json}
