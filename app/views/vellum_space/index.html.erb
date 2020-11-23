@@ -1,0 +1,46 @@
+<main>
+  <div class="box box3 right">
+    <div class="oddboxinner">
+      Controls:<br/><br/>
+      There are none... Enjoy.
+    </div>
+  </div>
+  <h1>Animated Sun Test</h1>
+  <p>Extremely simple animated sun test to make sure we can do all the simple static animations entirely in CSS.</p>
+  <p class="thin">Note; This test was also used to establish the theme and feel for the project.</p>
+</main>
+
+
+<div class="sun"></div>
+
+
+<% content_for(:styles) do %>
+  <style>
+
+    .sun {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-image: url("/vellum_space/sun-tiles.png");
+      height: 125px;
+      width: 125px;
+      animation: animate-sun 2.5s steps(34) infinite;
+    }
+    @keyframes animate-sun {
+      100% { background-position: -4250px; }
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 10px;
+      right: 10px;
+      font-weight: 400;
+    }
+    footer h3 {
+      float: right;
+    }
+
+  </style>
+<% end %>
