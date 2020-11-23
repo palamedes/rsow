@@ -28,7 +28,7 @@ $(document).on('ready turbolinks:load', function() {
       adjustInternalWindowHeight($(this), ui.size.height);
       setWindowLocationData($(this));
     }
-  }
+  };
 
   // Set Defaults for a draggable window
   var draggableWindowArguments = {
@@ -42,7 +42,7 @@ $(document).on('ready turbolinks:load', function() {
         setWindowLocationData($(this));
       }
     }
-  }
+  };
 
   // Make Windows Draggable and Resizable
   $('div.ui.window').draggable(draggableWindowArguments);
@@ -52,7 +52,7 @@ $(document).on('ready turbolinks:load', function() {
   var adjustDesktop = function() {
     var availableDesktopHeight = $(window).height() - $('.start-bar').outerHeight();
     $('div.desktop').height(availableDesktopHeight);
-  }
+  };
 
   // After resizing window, resize the contents a tad because this can't be done with CSS
   var adjustInternalWindowHeight = function($dis, height) {
@@ -60,26 +60,26 @@ $(document).on('ready turbolinks:load', function() {
     $dis.find('div.ui.compact.segment').height(newHeight);
     var menuHeight = $dis.find('div.ui.top.attached.menu').first().outerHeight();
     $dis.find('div.ui.bottom.attached.segment').height(newHeight - menuHeight - 36);
-  }
+  };
 
   // Set Window Height and Width
   var setWindowSize = function($window, height, width) {
     $window.height(height);
     $window.width(width);
     adjustInternalWindowHeight($window, height);
-  }
+  };
 
   // Set Window Top and Left
   var setWindowPosition = function($window, top, left) {
     $window.css('top', top);
     $window.css('left', left);
-  }
+  };
 
   // This is how we bring windows to the fore
   var bringToFront = function(dis) {
     $('div.window').css('zIndex', 1);
     $(dis).css('zIndex', 10);
-  }
+  };
 
   // Here is how we restore a window
   var restoreWindow = function($window) {
@@ -97,7 +97,7 @@ $(document).on('ready turbolinks:load', function() {
       $window.find('button.maximize').removeClass('hidden');
       $window.find('button.restore').addClass('hidden');
     }
-  }
+  };
 
   // Here is how we maximize a window
   var maximizeWindow = function($window) {
@@ -116,7 +116,7 @@ $(document).on('ready turbolinks:load', function() {
       $window.find('button.restore').removeClass('hidden');
       $window.find('button.maximize').addClass('hidden');
     }
-  }
+  };
 
   // Store the window location data in the data of the window object for use later
   var setWindowLocationData = function($window) {
@@ -126,7 +126,7 @@ $(document).on('ready turbolinks:load', function() {
       $window.data('width', $window.width());
       $window.data('height', $window.height());
     }
-  }
+  };
   // Get the window location and return it
   var getWindowLocationData = function($window) {
     if ($window.length) {
@@ -139,7 +139,7 @@ $(document).on('ready turbolinks:load', function() {
     } else {
       return { 'top': 5, 'left': 5, 'width': 800, 'height': 500 }
     }
-  }
+  };
 
   // Iterate through each window open.. Find the start bar link for it and make sure that is set to active.
   var updateStartbarLinks = function(data) {
@@ -169,8 +169,7 @@ $(document).on('ready turbolinks:load', function() {
         }
       }
     });
-
-  }
+  };
 
   // @TODO if someone clicks BACK after restoring a window it should go back to previous state of window?
 
@@ -182,8 +181,6 @@ $(document).on('ready turbolinks:load', function() {
   // @TODO handle small views so we are no longer a window system if we get too small (mobile etc..)
 
   // @TODO Save UI state in cookies so you can come back to it later on a fresh page load.
-
-  // @TODO Get ALL MD file variables to actually do something
 
   // @TODO window switching to full screen windows makes sure it's the latest in the url.
 
@@ -201,7 +198,7 @@ $(document).on('ready turbolinks:load', function() {
     var year = dT.getFullYear();
     $dateTime.html(h+':'+m+' '+ap+"<br/>"+month[dT.getMonth()]+' '+day+', '+year);
     setTimeout(updateDateTime, 60000);
-  }
+  };
 
   /*
    * Stuff to run once we are ready to..  This is the starting point of the page post load.
@@ -213,7 +210,7 @@ $(document).on('ready turbolinks:load', function() {
     adjustDesktop();
     // Really maximize any maximized windows
     maximizeWindow($('div.window.maximized'));
-  }
+  };
   // Fire it off once
   updateDesktop();
   // Start the clock
@@ -278,7 +275,7 @@ $(document).on('ready turbolinks:load', function() {
           fail: function(data) {
             // We have failed.. Go to the hard location.
             window.location = $(event.target).attr('href');
-          },
+          }
         });
       }
 
@@ -405,7 +402,7 @@ $(document).on('ready turbolinks:load', function() {
           chart.draw(data, options);
         }
 
-      };
+      }
       // Now init and draw that chart
       google.charts.load('current', {packages: ['corechart', 'line']});
       google.charts.setOnLoadCallback(drawChart);
