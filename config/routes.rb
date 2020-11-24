@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get '/', to: "vellum_space#index"
 
     # Wildcard to get a test by name
-    get '/demo/:demo', to: "vellum_space#demo"
+    get '/demo/:demo', to: "vellum_space#demo", as: :vellum_space_demo
   end
 
   # Stocks Resource
