@@ -1,0 +1,151 @@
+<main>
+  <button class="menu thin lined">Menu</button>
+
+  <div class="under box box1">
+    <div class="oddboxinner">
+      <small class="thin">Click below to see other demos</small>
+      <ul class="cabin">
+        <li><a href="menu-system.html">&gt; Under Menu Demo</a></li>
+        <li><a href="sun-zoom.html">&gt; ZOOM Demo</a></li>
+      </ul>
+      <small class="thin">More as I make them...</small>
+    </div>
+  </div>
+
+  <div class="frame">
+    <header>
+      <div class="box box3 right">
+        <div class="oddboxinner">
+          Controls:<br/><br/>
+          Click the menu button to see the menu in action!
+        </div>
+      </div>
+      <h1>CSS Animation / Under Menu Test</h1>
+      <p>This test is to show what the all CSS animation under menu would look like.</p>
+      <article class="thin">
+        <p>Mostly this test is about giving a way to see all the tests, <br />but also to again do everything in CSS so no animation is done in javascript.</p>
+        <p>The menu transition, animated sun and orbiting moons are also 100% CSS.</p>
+      </article>
+    </header>
+
+    <section>
+      <div class="solar system" data-zoom="1">
+        <div class="sun"></div>
+        <div class="inner orbit">
+          <div class="mars"></div>
+        </div>
+        <div class="outer orbit">
+          <div class="mars"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <h3><a href="http://Vellum.space">http://Vellum.space</a></h3>
+      <p>© 2020 - Jason Ellis</p>
+    </footer>
+  </div>
+</main>
+
+<% content_for :style do %>
+  <style>
+
+    .solar.system {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 500px;
+      height: 500px;
+      margin-top: -250px;
+      margin-left: -250px;
+    }
+
+    .sun {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: scale(1) translate(-62.5px, -62.5px);
+      background-image: url("/vellum_space/sun-tiles.png");
+      background-size: cover;
+      height: 125px;
+      width: 125px;
+      animation: animate-sun 2.5s steps(34) infinite;
+    }
+    @keyframes animate-sun {
+      100% { background-position: -4250px; }
+    }
+
+    .orbit.outer {
+      position: absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      border: 1px #bbb dotted;
+      border-radius: 100%;
+      animation: spin-right 25s linear infinite;
+    }
+    .orbit.inner {
+      position: absolute;
+      top:100px;
+      left:100px;
+      right:100px;
+      bottom:100px;
+      border: 1px #bbb dotted;
+      border-radius: 100%;
+      animation: spin-right 12s linear infinite;
+    }
+    @keyframes spin-right {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .mars {
+      position: absolute;
+      left: -12.5px;
+      top: 50%;
+      background-image: url("/vellum_space/mars.png");
+      background-size: cover;
+      width: 25px;
+      height: 25px;
+      animation: spin-left 20s linear infinite;
+    }
+    @keyframes spin-left {
+      100% {
+        transform: rotate(-360deg);
+      }
+    }
+
+    button.menu {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      z-index: 100;
+    }
+
+    div.under.box {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      width: 12%;
+    }
+
+    div.under.box ul {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+  </style>
+<% end %>
+
+<% content_for :script do %>
+  <script>
+    $(function() {
+      $('button.menu').on('click', function() {
+        $('div.frame').toggleClass('trap');
+      });
+    });
+  </script>
+<% end %>
+

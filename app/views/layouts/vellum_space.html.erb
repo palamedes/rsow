@@ -16,24 +16,15 @@
           integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
           crossorigin="anonymous"></script>
 
+  <%= content_for(:style) %>
 
-
-  <%= content_for(:styles) %>
   <%= content_for(:script) %>
 
 </head>
 
 <body>
 
-<div class="space">
-
   <%= yield %>
 
-</div>
-
-<footer>
-  <h3><a href="http://Vellum.space">http://Vellum.space</a></h3>
-  <p>© 2020 - Jason Ellis</p>
-</footer>
 </body>
 </html>

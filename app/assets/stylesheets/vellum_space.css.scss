@@ -1,62 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cabin+Sketch:wght@400;700&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
-h1, h2, h3, h4, h5 {
-    font-family: 'Cabin Sketch', cursive;
+
+h1, h2, h3, h4, h5, .cabin {
+  font-family: 'Cabin Sketch', cursive;
 }
+
 a {
+  color: black;
+  text-decoration: none;
+  &:active {
     color: black;
-    text-decoration: none;
+  }
 }
-a:active {
-    color: black;
+
+ul {
+  list-style: none;
 }
 
 body {
-    padding: 0 10px;
-    font-size: 24px;
-    font-family: 'Amatic SC', cursive;
-    font-weight: bold;
-    background: url("/vellum_space/paper.png");
+  padding: 0 10px;
+  font-size: 24px;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  background: url("/vellum_space/paper.png");
+  overflow: hidden;
+}
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  perspective: 1000px;
+  overflow: hidden;
+}
+header {
+  padding: 8px;
+}
+div.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid transparent;
+  background: url("/vellum_space/vellum.png");
+  transition: transform 0.7s ease-in-out, border-top-color 0.7s, border-bottom-color 0.7s, border-left-color 0.7s, border-right-color 0.7s;
+  &.frame.trap {
+    border-color: #222222;
+    transform: scale(0.8) translateX(-2%) rotateY(10deg);
+  }
 }
 
 .right {
-    float: right;
+  float: right;
 }
 .thin {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 /* Pencil Box */
-.box{
-    margin:25px;
-    width:250px;
-    height:250px;
-    border: solid black;
-}
-.box1{
+.box {
+  margin:25px;
+  width:250px;
+  height:250px;
+  border: solid black;
+  &.box1 {
     border-width: 3px 4px 3px 5px;
     border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
     transform: rotate(2deg);
-}
-.box2{
+  }
+  &.box2 {
     width:350px;
     border-width: 3px 3px 5px 5px;
     border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
     transform: rotate(-2deg);
-}
-.box3{
+  }
+  &.box3 {
     border-width: 3px 3px 3px 3px;
     border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
     transform: rotate(2deg);
-}
-.oddboxinner{
+  }
+  .oddboxinner{
     margin:15px;
     transform: rotate(-2deg);
-}
-.evenboxinner{
+  }
+  .evenboxinner{
     transform: rotate(2deg);
     margin:15px;
     padding:0 5px;
@@ -64,4 +97,52 @@ body {
     background:#ddd;
     border:1px solid #222;
     box-shadow:3px 3px 0 #222;
+  }
+}
+
+button {
+  align-self: center;
+  background: #ffffff;
+  padding: 5px;
+  margin: 0;
+  transition: all .5s ease;
+  color: #41403E;
+  letter-spacing: 1px;
+  outline: none;
+  box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  &:hover {
+    box-shadow: 10px 28px 24px -12px hsla(0, 0%, 0%, .2);
+  }
+  &.lined {
+    border:solid 1px #41403E;
+  }
+  &.dotted {
+    border:dotted 2px #41403E;
+  }
+  &.dashed {
+    border:dashed 2px #41403E;
+  }
+  &.thick {
+    &.lined {
+      border:solid 7px #41403E;
+    }
+    &.dotted {
+      border:dotted 5px #41403E;
+    }
+    &.dashed {
+      border:dashed 5px #41403E;
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  font-weight: 400;
+}
+footer h3 {
+  float: right;
 }

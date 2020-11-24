@@ -1,0 +1,76 @@
+<main>
+
+  <div class="frame">
+    <header>
+      <div class="box box3 right">
+        <div class="oddboxinner">
+          Controls:<br/><br/>
+          Mousewheel to zoom
+        </div>
+      </div>
+      <h1>Sun Zoom Test</h1>
+      <p>This test should allow you to zoom in and out on the animated sun.</p>
+      <article class="thin">
+        <p>Scaling will have a minimum and maximum size. 0.1 to 5 for now.</p>
+        <p><small>Note: Older test, no menu system here.  Use back button.</small></p>
+      </article>
+    </header>
+    <section>
+      <div class="sun" data-zoom="1"></div>
+    </section>
+
+    <footer>
+      <h3><a href="http://Vellum.space">http://Vellum.space</a></h3>
+      <p>© 2020 - Jason Ellis</p>
+    </footer>
+  </div>
+</main>
+
+<% content_for :style do %>
+<style>
+  .sun {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: scale(1) translate(-62.5px, -62.5px);
+    background-image: url("/vellum_space/sun-tiles.png");
+    background-size: cover;
+    height: 125px;
+    width: 125px;
+    animation: animate-sun 2.5s steps(34) infinite;
+  }
+  @keyframes animate-sun {
+    100% { background-position: -4250px; }
+  }
+</style>
+<% end %>
+
+<% content_for :script do %>
+  <script>
+    $(document).on('DOMMouseScroll mousewheel', function (e) {
+      if(e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) { //alternative options for wheelData: wheelDeltaX & wheelDeltaY
+        // Down, Zoom out
+        let $sun = $('.sun');
+        let zoom = $sun.data('zoom');
+        zoom -= 0.1
+        zoom = Math.round(zoom * 10) / 10
+        if (zoom < 0.1) { zoom = 0.1 }
+        let width = $sun.width() / 2;
+        let height = $sun.height() / 2;
+        $sun.css('transform','matrix(' + zoom + ',0,0,' + zoom + ',' + -width + ',' + -height + ')');
+        $sun.data('zoom', zoom);
+      } else {
+        // UP, Zoom in
+        let $sun = $('.sun');
+        let zoom = $sun.data('zoom');
+        zoom += 0.1
+        zoom = Math.round(zoom * 10) / 10
+        if (zoom > 5) { zoom = 5 }
+        let width = $sun.width() / 2;
+        let height = $sun.height() / 2;
+        $sun.css('transform','matrix(' + zoom + ',0,0,' + zoom + ',' + -width + ',' + -height + ')');
+        $sun.data('zoom', zoom);
+      }
+    });
+  </script>
+<% end %>
