@@ -50,9 +50,10 @@ div.frame {
   border: 1px solid transparent;
   background: url("/vellum_space/vellum.png");
   transition: transform 0.7s ease-in-out, border-top-color 0.7s, border-bottom-color 0.7s, border-left-color 0.7s, border-right-color 0.7s;
+  transform-origin: left;
   &.frame.trap {
     border-color: #222222;
-    transform: scale(0.8) translateX(-2%) rotateY(10deg);
+    transform: scale(1) translateX(1%) rotateY(13deg);
   }
 }
 
