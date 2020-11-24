@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   # Vellum.Space
   scope '/vellum.space' do
+    # Default root for vellum space
     get '/', to: "vellum_space#index"
+
+    # Wildcard to get a test by name
+    get '/demo/:demo', to: "vellum_space#demo"
   end
 
   # Stocks Resource
